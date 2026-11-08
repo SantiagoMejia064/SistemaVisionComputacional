@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+*.tmp
+*.log
+
+# Pesos de modelos entrenados
+/models/**
+!/models/cnn/
+!/models/yolo/
+!/models/**/.gitkeep
+!/models/**/README.md
+
+# Conjuntos de datos locales y archivos comprimidos
+/data/imagenes/**
+/data/anotaciones/**
+!/data/**/.gitkeep
+!/data/**/README.md
+/data/**/*.zip
+/data/**/*.tar
+/data/**/*.gz
+/data/**/*.7z

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colombia en Movimiento</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    <button class="visually-hidden-focusable position-absolute z-3 p-2 bg-dark" type="button" data-ir="contenido">Saltar al contenido</button>
+    <header class="cabecera">
+        <div class="container-fluid ancho d-flex align-items-center justify-content-between flex-wrap py-2">
+            <div class="marca">Colombia en Movimiento<small>EXPERIENCIA INTERACTIVA PDI</small></div>
+            <nav class="menu" aria-label="Paneles de la experiencia">
+                <button type="button" data-ir="danzas">Danzas</button>
+                <button type="button" data-ir="panel-camara">Visor</button>
+                <button type="button" data-ir="resultados">Resultados</button>
+            </nav>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <span class="insignia verde"><span class="punto"></span>Instalación local</span>
+                <span class="insignia naranja" id="estado-dispositivo" role="status">Cámara apagada</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-fluid ancho py-3 py-lg-4" id="contenido" tabindex="-1">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-7 vstack gap-3">
+                <section class="portada p-3 p-sm-4">
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <span class="insignia verde"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#nodes"></use></svg> EXPERIENCIA INTERACTIVA PDI</span>
+                        <span class="mini fw-semibold secundario">EXHIBICIÓN LOCAL</span>
+                    </div>
+                    <h1>Descubre las danzas tradicionales de <span class="celeste">Colombia</span></h1>
+                    <p class="mb-2">Explora cuatro regiones a través de sus danzas y ensaya las posturas del repertorio frente al visor.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-naranja" data-activar-camara data-ir="panel-camara"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#camera"></use></svg> <span id="accion-camara-portada">Activar cámara</span></button>
+                        <button type="button" class="btn btn-panel" data-ir="danzas"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#map"></use></svg> Explorar danzas</button>
+                    </div>
+                </section>
+                <section class="panel p-3" id="mapa-cultural">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-2">
+                        <h2 class="mb-0"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#map"></use></svg></span> Geografía coreográfica de Colombia</h2>
+                        <span class="insignia">MAPA CULTURAL</span>
+                    </div>
+                    <div class="mapa">
+                        <object type="image/svg+xml" data="assets/maps/colombia.svg" aria-label="Mapa cultural de Colombia">
+                            <p>Cumbia (Caribe), Currulao (Pacífica), Bambuco (Andina) y Joropo (Orinoquía).</p>
+                        </object>
+                        <ul class="mapa-leyenda list-unstyled mb-2 px-2">
+                            <li class="region-texto caribe"><span class="punto"></span> Caribe · Cumbia</li>
+                            <li class="region-texto pacifica"><span class="punto"></span> Pacífica · Currulao</li>
+                            <li class="region-texto andina"><span class="punto"></span> Andina · Bambuco</li>
+                            <li class="region-texto orinoquia"><span class="punto"></span> Orinoquía · Joropo</li>
+                        </ul>
+                    </div>
+                    <p class="mini mb-0 mt-2">Pasa el cursor por una región para conocer su danza. Usa el repertorio para explorar cada danza.</p>
+                </section>
+                <section id="danzas" tabindex="-1" aria-labelledby="titulo-danzas">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-2">
+                        <h2 class="mb-0" id="titulo-danzas">Repertorio de danzas</h2>
+                        <span class="insignia verde">4 danzas</span>
+                    </div>
+                    <p class="mini mb-2">Elige una tarjeta para cambiar la ficha cultural.</p>
+                    <fieldset class="row row-cols-2 row-cols-sm-4 g-2">
+                        <legend class="visually-hidden">Danza para explorar</legend>
+                        <div class="col">
+                            <label class="tarjeta-danza caribe">
+                                <span class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                                    <strong>Cumbia</strong>
+                                    <input class="form-check-input m-0" type="radio" name="danza" value="cumbia" checked aria-label="Cumbia">
+                                </span>
+                                <span class="foto"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#image"></use></svg><span>Fotografía pendiente</span></span>
+                                <span class="d-block mt-2 fw-semibold">Brazos arriba</span>
+                                <span class="d-block mini region-texto">Caribe</span>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="tarjeta-danza pacifica">
+                                <span class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                                    <strong>Currulao</strong>
+                                    <input class="form-check-input m-0" type="radio" name="danza" value="currulao" aria-label="Currulao">
+                                </span>
+                                <span class="foto"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#image"></use></svg><span>Fotografía pendiente</span></span>
+                                <span class="d-block mt-2 fw-semibold">Brazos al lado</span>
+                                <span class="d-block mini region-texto">Pacífica</span>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="tarjeta-danza andina">
+                                <span class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                                    <strong>Bambuco</strong>
+                                    <input class="form-check-input m-0" type="radio" name="danza" value="bambuco" aria-label="Bambuco">
+                                </span>
+                                <span class="foto"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#image"></use></svg><span>Fotografía pendiente</span></span>
+                                <span class="d-block mt-2 fw-semibold">Pierna arriba</span>
+                                <span class="d-block mini region-texto">Andina</span>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="tarjeta-danza orinoquia">
+                                <span class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                                    <strong>Joropo</strong>
+                                    <input class="form-check-input m-0" type="radio" name="danza" value="joropo" aria-label="Joropo">
+                                </span>
+                                <span class="foto"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#image"></use></svg><span>Fotografía pendiente</span></span>
+                                <span class="d-block mt-2 fw-semibold">Mano diagonal</span>
+                                <span class="d-block mini region-texto">Orinoquía</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <button class="btn btn-panel btn-sm mt-3" type="button" data-ir="panel-cultural">Consultar la ficha cultural</button>
+                </section>
+            </div>
+
+            <div class="col-lg-5 vstack gap-3">
+                <section class="panel overflow-hidden" id="panel-camara" tabindex="-1" aria-labelledby="titulo-camara">
+                    <div class="hud d-flex flex-wrap justify-content-between align-items-center gap-2">
+                        <h2 class="h6 mb-0" id="titulo-camara"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#camera"></use></svg> Cámara y detección</h2>
+                        <span class="insignia naranja" id="estado-camara" role="status">En espera</span>
+                    </div>
+                    <div class="visor visor-espera" id="visor-camara">
+                        <video id="video-camara" autoplay playsinline muted hidden aria-label="Vista de cámara"></video>
+                        <img class="esqueleto" src="assets/icons/postura.svg" alt="">
+                        <div class="visor-mensaje">
+                            <svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#target"></use></svg>
+                            <h3 class="mt-2 mb-1" id="titulo-visor">Ponte de pie frente al visor</h3>
+                            <p class="mb-0" id="mensaje-visor">La silueta es una guía visual para el encuadre.</p>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div class="recuadro p-2 mb-3">
+                            <label class="form-label mini fw-semibold mb-1" for="dispositivo-camara">Cámara del dispositivo</label>
+                            <select class="form-select form-select-sm mb-2" id="dispositivo-camara" aria-describedby="ayuda-dispositivo">
+                                <option value="">Cámara predeterminada</option>
+                            </select>
+                            <p class="mini mb-2" id="ayuda-dispositivo">Activa la cámara y concede el permiso para ver las opciones disponibles.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-celeste" id="activar-camara" data-activar-camara>Activar cámara</button>
+                                <button type="button" class="btn btn-panel" id="detener-camara" hidden>Apagar cámara</button>
+                            </div>
+                            <p class="alert alert-danger mini p-2 mt-2 mb-0" id="error-dispositivo" role="alert" hidden></p>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2 mb-3" id="controles-camara">
+                            <button type="button" class="btn btn-celeste" data-camara="preparacion">Preparar encuadre</button>
+                            <button type="button" class="btn btn-celeste" data-camara="analisis" hidden>Previsualizar análisis</button>
+                            <button type="button" class="btn btn-celeste" data-camara="resultado" data-ir="resultados" hidden>Ver panel de resultados</button>
+                            <button type="button" class="btn btn-panel" data-camara="espera" hidden>Volver al estado inicial</button>
+                        </div>
+
+                        <details class="recuadro p-2 mb-2" id="guia">
+                            <summary class="fw-semibold">Guía de encuadre</summary>
+                            <ul class="list-unstyled mini mb-0 mt-2">
+                                <li class="mb-1"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#sun"></use></svg> <strong>Buena luz.</strong> Busca iluminación frontal uniforme.</li>
+                                <li class="mb-1"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#person"></use></svg> <strong>Cuerpo completo.</strong> Deja visibles la cabeza, las manos y los pies.</li>
+                                <li><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#ruler"></use></svg> <strong>Distancia.</strong> Usa de 1,8 a 2,2 metros como referencia.</li>
+                            </ul>
+                        </details>
+
+                        <div class="recuadro p-2 mb-2" id="pipeline-pdi" hidden>
+                            <p class="tecnico mb-1 celeste">PIPELINE PDI · VISTA DE DEMOSTRACIÓN</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="insignia">Captura temporal</span>
+                                <span class="insignia">CNN y YOLO Pose</span>
+                                <span class="insignia">Evaluación de ángulos</span>
+                            </div>
+                        </div>
+
+                        <details class="mini">
+                            <summary class="fw-semibold secundario">Probar un aviso de demostración</summary>
+                            <label class="visually-hidden" for="escenario">Escenario de demostración</label>
+                            <select class="form-select form-select-sm mt-2" id="escenario">
+                                <option value="">Selecciona un escenario</option>
+                                <option value="datos" data-mensaje="El encuadre corta parte del cuerpo. Da un paso atrás hasta que la cabeza y ambos pies queden visibles.">Datos inválidos</option>
+                                <option value="prediccion" data-mensaje="La postura es ambigua. Revisa la pose de referencia y mantén visibles los brazos y las piernas.">Predicción incierta</option>
+                                <option value="hallazgos" data-mensaje="El visor no tiene puntos corporales disponibles. Ubícate en el centro y comprueba la iluminación.">Cero hallazgos</option>
+                                <option value="tecnico" data-mensaje="El visor no recibe una imagen. Comprueba la conexión del dispositivo y el permiso de cámara.">Error técnico</option>
+                            </select>
+                        </details>
+
+                        <div class="alert alert-danger p-2 mt-2 mb-0" id="aviso-camara" hidden>
+                            <div role="alert">
+                                <h3 class="h6 mb-1" id="titulo-aviso"></h3>
+                                <p class="mini mb-2" id="mensaje-aviso"></p>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-panel btn-sm" id="cerrar-aviso">Cerrar aviso</button>
+                                <button type="button" class="btn btn-celeste btn-sm" data-camara="preparacion" data-ir="panel-camara">Reintentar encuadre</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel p-3 ficha-cultural" id="panel-cultural" tabindex="-1" aria-labelledby="titulo-cultural">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-2">
+                        <h2 class="mb-0" id="titulo-cultural"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#music"></use></svg></span> Ficha cultural</h2>
+                        <span class="insignia" id="region-cultural">Caribe</span>
+                    </div>
+                    <div class="row g-2 mb-3" aria-label="Recursos de la danza">
+                        <div class="col-5">
+                            <div class="foto h-100"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#image"></use></svg><span id="foto-cultural">Fotografía de Cumbia pendiente</span></div>
+                        </div>
+                        <div class="col-7">
+                            <div class="video rounded-3"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#play"></use></svg><strong class="mini" id="video-cultural">Video de Cumbia</strong><span class="mini">Pendiente de incorporar</span></div>
+                        </div>
+                    </div>
+                    <p id="danza-seleccionada" class="visually-hidden" role="status"></p>
+                    <article class="caribe" data-ficha="cumbia" data-region="Caribe">
+                        <h3 class="h5 region-texto mb-1">Cumbia</h3>
+                        <p class="mb-2">Tradición musical y de baile ligada al Bajo Magdalena y al Caribe colombiano. Sus rondas reúnen a músicos, bailadores y público.</p>
+                        <p class="mini mb-2"><strong>Pose del repertorio.</strong> Brazos arriba.</p>
+                        <details class="recuadro p-2">
+                            <summary class="fw-semibold">Música y vestuario</summary>
+                            <p class="mini mt-2 mb-1"><strong>Instrumentos.</strong> Gaita o caña de millo y tambores, según la variante local.</p>
+                            <p class="mini mb-0"><strong>Vestuario.</strong> En distintas representaciones se emplea una pollera amplia. El atuendo cambia entre localidades.</p>
+                        </details>
+                    </article>
+                    <article class="pacifica" data-ficha="currulao" data-region="Pacífica" hidden>
+                        <h3 class="h5 region-texto mb-1">Currulao</h3>
+                        <p class="mb-2">Baile del Pacífico sur colombiano que acompaña celebraciones comunitarias y las músicas de marimba.</p>
+                        <p class="mini mb-2"><strong>Pose del repertorio.</strong> Brazos al lado.</p>
+                        <details class="recuadro p-2">
+                            <summary class="fw-semibold">Música y vestuario</summary>
+                            <p class="mini mt-2 mb-1"><strong>Instrumentos.</strong> Marimba de chonta, cununos, bombos y guasás.</p>
+                            <p class="mini mb-0"><strong>Vestuario.</strong> En la tradición de Guapi se usa una falda blanca amplia. El pañuelo acompaña el baile.</p>
+                        </details>
+                    </article>
+                    <article class="andina" data-ficha="bambuco" data-region="Andina" hidden>
+                        <h3 class="h5 region-texto mb-1">Bambuco</h3>
+                        <p class="mb-2">El bambuco reúne expresiones musicales y de baile de la región Andina. En el Huila, el sanjuanero se baila en pareja con recorridos y figuras de cortejo.</p>
+                        <p class="mini mb-2"><strong>Pose del repertorio.</strong> Pierna arriba.</p>
+                        <details class="recuadro p-2">
+                            <summary class="fw-semibold">Música y vestuario</summary>
+                            <p class="mini mt-2 mb-1"><strong>Instrumentos.</strong> Los conjuntos andinos pueden acompañar el bambuco con tiple, bandola y guitarra.</p>
+                            <p class="mini mb-0"><strong>Vestuario.</strong> En el sanjuanero huilense se usa una falda amplia decorada con flores.</p>
+                        </details>
+                    </article>
+                    <article class="orinoquia" data-ficha="joropo" data-region="Orinoquía" hidden>
+                        <h3 class="h5 region-texto mb-1">Joropo</h3>
+                        <p class="mb-2">El joropo es una tradición musical y dancística de los Llanos. El zapateo forma parte del baile.</p>
+                        <p class="mini mb-2"><strong>Pose del repertorio.</strong> Mano diagonal.</p>
+                        <details class="recuadro p-2">
+                            <summary class="fw-semibold">Música y vestuario</summary>
+                            <p class="mini mt-2 mb-1"><strong>Instrumentos.</strong> Arpa o bandola llanera, cuatro y capachos.</p>
+                            <p class="mini mb-0"><strong>Vestuario.</strong> En los Llanos se encuentran distintas formas de vestir para el baile. El sombrero es una pieza del atuendo llanero.</p>
+                        </details>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+        <section class="panel p-3 p-sm-4 mt-4" id="resultados" tabindex="-1" aria-labelledby="titulo-resultados">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-3">
+                <h2 class="mb-0" id="titulo-resultados"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#nodes"></use></svg></span> Resultados de postura</h2>
+                <span class="insignia" id="estado-resultados" role="status">Esperando captura</span>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-3">
+                <div class="col">
+                    <article class="recuadro p-3 h-100" id="resultado-cnn">
+                        <h3 class="celeste">CNN · Danza reconocida</h3>
+                        <dl class="datos-resultado mb-0">
+                            <dt>Danza</dt><dd id="cnn-danza">Pendiente</dd>
+                            <dt>Región</dt><dd id="cnn-region">—</dd>
+                            <dt>Confianza</dt><dd id="cnn-confianza">—</dd>
+                        </dl>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="recuadro p-3 h-100" id="resultado-yolo">
+                        <h3 class="verde">YOLO Pose · Puntos corporales</h3>
+                        <dl class="datos-resultado mb-2">
+                            <dt>Persona detectada</dt><dd id="yolo-persona">Pendiente</dd>
+                            <dt>Puntos corporales</dt><dd id="yolo-puntos">—</dd>
+                        </dl>
+                        <div class="esqueleto-resultado rounded-3 p-2">
+                            <img src="assets/icons/postura.svg" alt="">
+                            <small id="yolo-estado-esqueleto">Silueta de referencia</small>
+                            <svg id="yolo-esqueleto" role="img" aria-label="Esqueleto detectado" hidden></svg>
+                        </div>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="recuadro p-3 h-100" id="resultado-angulos">
+                        <h3 class="naranja">Ángulos · Evaluación</h3>
+                        <dl class="datos-resultado mb-2">
+                            <dt>Ángulos calculados</dt><dd id="angulos-calculados">—</dd>
+                            <dt>Comparación con referencia</dt><dd id="angulos-referencia">Pendiente</dd>
+                            <dt>Cumplimiento</dt><dd id="angulos-cumplimiento">—</dd>
+                        </dl>
+                        <p class="mini mb-0" id="angulos-recomendaciones">Las recomendaciones aparecerán aquí tras una evaluación.</p>
+                    </article>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+                <button type="button" class="btn btn-panel" data-camara="preparacion" data-ir="panel-camara">Preparar otro intento</button>
+                <button type="button" class="btn btn-panel" data-ir="danzas">Explorar otra danza</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <div class="container-fluid ancho d-flex flex-wrap gap-2 justify-content-between align-items-center py-2 mini">
+            <strong>Colombia en Movimiento · Proyecto universitario</strong>
+            <span class="secundario"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#shield"></use></svg> Uso local · Capturas y resultados temporales al integrar PDI</span>
+        </div>
+    </footer>
+</body>
+</html>
