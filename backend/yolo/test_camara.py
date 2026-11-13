@@ -15,7 +15,7 @@ CLASSIFIER_PATH = ROOT_DIR / "models" / "yolo" / "pose_classifier.pth"
 YOLO_MODEL = "yolo11n-pose.pt"
 CAMERA_INDEX = 0
 UMBRAL_YOLO = 0.60
-UMBRAL_CLASIFICACION = 0.80
+UMBRAL_CLASIFICACION = 0.70
 
 class PoseClassifier(nn.Module):
 
