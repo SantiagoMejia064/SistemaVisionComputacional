@@ -3,6 +3,12 @@
 // ============================================================
 
 const fichas = document.querySelectorAll("[data-ficha]");
+const fotosCulturales = {
+    cumbia: "assets/images/mapa-cumbia.webp",
+    currulao: "assets/images/mapa-currulao.jpg",
+    bambuco: "assets/images/mapa-bambuco.jpg",
+    joropo: "assets/images/mapa-joropo.jpg"
+};
 
 function seleccionarDanza(danza) {
     fichas.forEach((ficha) => {
@@ -13,7 +19,9 @@ function seleccionarDanza(danza) {
     const nombre = ficha.querySelector("h3").textContent;
 
     document.querySelector("#region-cultural").textContent = ficha.dataset.region;
-    document.querySelector("#foto-cultural").textContent = `Fotografía de ${nombre} pendiente`;
+    const foto = document.querySelector("#foto-cultural");
+    foto.src = fotosCulturales[danza];
+    foto.alt = `Fotografía de ${nombre}`;
     document.querySelector("#video-cultural").textContent = `Video de ${nombre}`;
     document.querySelector("#danza-seleccionada").textContent = `Ficha cultural de ${nombre}`;
 }
