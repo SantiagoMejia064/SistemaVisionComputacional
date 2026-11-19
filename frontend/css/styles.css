@@ -205,6 +205,18 @@ a:hover { color: var(--texto); }
     text-align: center;
 }
 .foto .icono { width: 24px; height: 24px; color: var(--rotulo, var(--azul)); }
+.tarjeta-danza .foto {
+    display: block;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border: 0;
+}
+.tarjeta-danza .foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .tarjeta-danza {
     display: block;
     height: 100%;

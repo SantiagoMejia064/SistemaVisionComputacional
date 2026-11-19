@@ -3,6 +3,7 @@
   <desc id="descripcion">Mapa esquemático con cuatro regiones. Pasa el cursor o usa Tab para destacar cada región y su danza.</desc>
   <defs>
     <clipPath id="silueta"><path d="M264.4 203.8L258.0 200.2L250.6 195.3L246.4 197.6L233.6 195.6L230.0 189.1L227.2 189.4L212.2 180.8L210.1 176.1L215.7 175.0L215.1 167.5L218.6 162.1L226.0 161.1L232.3 151.6L238.1 143.8L232.6 140.2L235.4 131.5L232.0 117.8L235.2 113.8L232.9 101.1L226.8 93.1L228.7 85.9L233.5 86.9L236.4 82.5L232.9 73.6L234.7 71.4L242.4 71.9L253.7 61.4L259.9 59.9L260.0 54.9L262.8 42.2L271.4 35.3L280.8 35.0L282.0 31.8L293.8 33.1L305.6 25.5L311.4 22.2L318.7 14.9L324.0 15.9L327.9 19.8L325.0 24.9L315.4 27.4L311.6 34.9L305.8 39.2L301.4 44.7L299.6 55.4L295.4 64.2L303.2 65.2L305.1 72.1L308.4 75.4L309.6 81.5L307.8 87.0L308.3 90.1L312.0 91.4L315.6 96.6L334.9 95.2L343.6 97.1L354.2 110.0L360.2 108.4L371.0 109.2L379.6 107.5L384.9 110.1L382.2 118.1L378.8 123.2L377.7 133.9L380.7 143.9L384.9 148.4L385.5 151.7L377.9 159.2L383.3 162.5L387.3 167.7L391.9 182.7L389.0 184.5L386.1 175.7L381.9 170.9L377.0 176.1L347.7 175.8L347.9 185.2L356.7 186.7L356.2 192.5L353.2 190.9L344.8 193.4L344.7 204.3L351.3 209.7L353.7 218.3L353.3 224.8L346.6 266.0L339.1 258.0L334.6 257.6L344.3 242.4L332.8 235.4L323.8 236.6L318.4 234.0L310.1 238.0L298.9 236.1L290.1 220.4L283.2 216.5L278.4 209.5L268.4 202.4L264.4 203.8Z"/></clipPath>
+    <clipPath id="recorte-vista"><rect x="20" y="14" width="154" height="80" rx="6"/></clipPath>
   </defs>
   <style>
     :root { color-scheme: dark; background: transparent; }
@@ -15,7 +16,12 @@
     .danza { fill: #dbe1ff; font: 650 12px system-ui, sans-serif; }
     .region:hover .territorio, .region:focus-visible .territorio { fill-opacity: .86; }
     .region:hover .etiqueta, .region:focus-visible .etiqueta { fill: #212942; stroke-width: 2.5; }
-    @media (prefers-reduced-motion: reduce) { .territorio, .etiqueta { transition: none; } }
+    .vista-previa { opacity: 0; pointer-events: none; transform: translateY(6px); transition: opacity .18s, transform .18s; }
+    .region:hover .vista-previa, .region:focus-visible .vista-previa { opacity: 1; transform: none; }
+    .vista-marco { fill: #131a33; stroke: var(--color); stroke-width: 1.5; }
+    .vista-region { fill: var(--color); font: 700 9px system-ui, sans-serif; letter-spacing: .5px; }
+    .vista-danza { fill: #dbe1ff; font: 700 12px system-ui, sans-serif; }
+    @media (prefers-reduced-motion: reduce) { .territorio, .etiqueta, .vista-previa { transition: none; } }
   </style>
   <path d="M264.4 203.8L258.0 200.2L250.6 195.3L246.4 197.6L233.6 195.6L230.0 189.1L227.2 189.4L212.2 180.8L210.1 176.1L215.7 175.0L215.1 167.5L218.6 162.1L226.0 161.1L232.3 151.6L238.1 143.8L232.6 140.2L235.4 131.5L232.0 117.8L235.2 113.8L232.9 101.1L226.8 93.1L228.7 85.9L233.5 86.9L236.4 82.5L232.9 73.6L234.7 71.4L242.4 71.9L253.7 61.4L259.9 59.9L260.0 54.9L262.8 42.2L271.4 35.3L280.8 35.0L282.0 31.8L293.8 33.1L305.6 25.5L311.4 22.2L318.7 14.9L324.0 15.9L327.9 19.8L325.0 24.9L315.4 27.4L311.6 34.9L305.8 39.2L301.4 44.7L299.6 55.4L295.4 64.2L303.2 65.2L305.1 72.1L308.4 75.4L309.6 81.5L307.8 87.0L308.3 90.1L312.0 91.4L315.6 96.6L334.9 95.2L343.6 97.1L354.2 110.0L360.2 108.4L371.0 109.2L379.6 107.5L384.9 110.1L382.2 118.1L378.8 123.2L377.7 133.9L380.7 143.9L384.9 148.4L385.5 151.7L377.9 159.2L383.3 162.5L387.3 167.7L391.9 182.7L389.0 184.5L386.1 175.7L381.9 170.9L377.0 176.1L347.7 175.8L347.9 185.2L356.7 186.7L356.2 192.5L353.2 190.9L344.8 193.4L344.7 204.3L351.3 209.7L353.7 218.3L353.3 224.8L346.6 266.0L339.1 258.0L334.6 257.6L344.3 242.4L332.8 235.4L323.8 236.6L318.4 234.0L310.1 238.0L298.9 236.1L290.1 220.4L283.2 216.5L278.4 209.5L268.4 202.4L264.4 203.8Z" fill="#212942" stroke="#516480" stroke-width="2"/>
   <g class="region" tabindex="0" role="img" aria-label="Caribe — Cumbia" style="--color:#EC6A06;--rotulo:#FFB690">
@@ -26,6 +32,12 @@
     <circle cx="348" cy="31" r="4" fill="#EC6A06"/>
     <text class="nombre" x="359" y="27">CARIBE</text>
     <text class="danza" x="359" y="41">Cumbia</text>
+    <g class="vista-previa" aria-hidden="true">
+      <rect class="vista-marco" x="14" y="8" width="166" height="116" rx="10"/>
+      <image href="../images/mapa-cumbia.webp" x="20" y="14" width="154" height="80" preserveAspectRatio="xMidYMid slice" clip-path="url(#recorte-vista)"/>
+      <text class="vista-region" x="22" y="106">CARIBE</text>
+      <text class="vista-danza" x="22" y="119">Cumbia</text>
+    </g>
   </g>
   <g class="region" tabindex="0" role="img" aria-label="Pacífica — Currulao" style="--color:#4EDEA3">
     <path class="territorio" clip-path="url(#silueta)" d="M180.0 81.5L242.3 74.8L245.2 92.8L248.2 111.5L245.2 134.0L240.0 153.5L230.2 170.0L231.0 192.5L234.0 209.0L180.0 231.5Z"/>
@@ -35,6 +47,12 @@
     <circle cx="39" cy="148" r="4" fill="#4EDEA3"/>
     <text class="nombre" x="50" y="144">PACÍFICA</text>
     <text class="danza" x="50" y="158">Currulao</text>
+    <g class="vista-previa" aria-hidden="true">
+      <rect class="vista-marco" x="14" y="8" width="166" height="116" rx="10"/>
+      <image href="../images/mapa-currulao.jpg" x="20" y="14" width="154" height="80" preserveAspectRatio="xMidYMid slice" clip-path="url(#recorte-vista)"/>
+      <text class="vista-region" x="22" y="106">PACÍFICA</text>
+      <text class="vista-danza" x="22" y="119">Currulao</text>
+    </g>
   </g>
   <g class="region" tabindex="0" role="img" aria-label="Andina — Bambuco" style="--color:#89CEFF">
     <path class="territorio" clip-path="url(#silueta)" d="M242.3 74.8L261.0 79.7L274.5 74.2L286.5 72.5L297.0 63.5L315.0 61.3L316.5 80.0L315.0 96.5L303.0 108.5L294.0 117.5L285.0 138.5L276.8 153.5L276.8 153.5L264.8 171.5L252.7 184.3L246.0 197.0L240.0 210.5L234.0 209.0L231.0 192.5L230.2 170.0L240.0 153.5L245.2 134.0L248.2 111.5L245.2 92.8L242.3 74.8Z"/>
@@ -44,6 +62,12 @@
     <circle cx="70" cy="224" r="4" fill="#89CEFF"/>
     <text class="nombre" x="81" y="220">ANDINA</text>
     <text class="danza" x="81" y="234">Bambuco</text>
+    <g class="vista-previa" aria-hidden="true">
+      <rect class="vista-marco" x="14" y="8" width="166" height="116" rx="10"/>
+      <image href="../images/mapa-bambuco.jpg" x="20" y="14" width="154" height="80" preserveAspectRatio="xMidYMid slice" clip-path="url(#recorte-vista)"/>
+      <text class="vista-region" x="22" y="106">ANDINA</text>
+      <text class="vista-danza" x="22" y="119">Bambuco</text>
+    </g>
   </g>
   <g class="region" tabindex="0" role="img" aria-label="Orinoquía — Joropo" style="--color:#23ACF1">
     <path class="territorio" clip-path="url(#silueta)" d="M316.5 80.0L315.0 96.5L303.0 108.5L294.0 117.5L285.0 138.5L276.8 153.5L294.0 166.3L318.0 164.8L342.0 167.3L375.0 170.0L405.0 162.5L420.0 80.0Z"/>
@@ -53,5 +77,11 @@
     <circle cx="416" cy="175" r="4" fill="#23ACF1"/>
     <text class="nombre" x="427" y="171">ORINOQUÍA</text>
     <text class="danza" x="427" y="185">Joropo</text>
+    <g class="vista-previa" aria-hidden="true">
+      <rect class="vista-marco" x="14" y="8" width="166" height="116" rx="10"/>
+      <image href="../images/mapa-joropo.jpg" x="20" y="14" width="154" height="80" preserveAspectRatio="xMidYMid slice" clip-path="url(#recorte-vista)"/>
+      <text class="vista-region" x="22" y="106">ORINOQUÍA</text>
+      <text class="vista-danza" x="22" y="119">Joropo</text>
+    </g>
   </g>
 </svg>
