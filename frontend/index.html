@@ -1,12 +1,13 @@
 
 <!doctype html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Colombia en Movimiento</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme-ingenieria.css">
     <script defer src="js/deteccion.js"></script>
     <script defer src="js/main.js"></script>
 </head>
@@ -206,7 +207,11 @@
                             <div class="foto h-100"><img id="foto-cultural" src="assets/images/mapa-cumbia.webp" alt="Fotografía de Cumbia"></div>
                         </div>
                         <div class="col-7">
-                            <div class="video rounded-3"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#play"></use></svg><strong class="mini" id="video-cultural">Video de Cumbia</strong><span class="mini">Pendiente de incorporar</span></div>
+                            <div class="video video-reproductor rounded-3">
+                                <video id="video-cultural" src="assets/videos/cumbia.mp4" poster="assets/images/mapa-cumbia.webp" controls preload="metadata" playsinline aria-label="Video de Cumbia">
+                                    Tu navegador no admite videos MP4.
+                                </video>
+                            </div>
                         </div>
                     </div>
                     <p id="danza-seleccionada" class="visually-hidden" role="status"></p>

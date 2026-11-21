@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 260" fill="none">
-  <path d="M67 15 74 12 80 17 86 12 93 15M80 17V42L51 56 35 96 20 132M80 42l29 14 16 40 15 36M51 56l8 70h42l8-70M59 126l-6 55-5 54m53-109 6 55 5 54" stroke="#4EDEA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#4EDEA3">
+  <path d="M67 15 74 12 80 17 86 12 93 15M80 17V42L51 56 35 96 20 132M80 42l29 14 16 40 15 36M51 56l8 70h42l8-70M59 126l-6 55-5 54m53-109 6 55 5 54" stroke="#FE6A6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#FE6A6F">
     <circle cx="67" cy="15" r="2"/><circle cx="74" cy="12" r="2"/><circle cx="80" cy="17" r="4"/><circle cx="86" cy="12" r="2"/><circle cx="93" cy="15" r="2"/>
     <circle cx="51" cy="56" r="4"/><circle cx="35" cy="96" r="3"/><circle cx="20" cy="132" r="3"/><circle cx="109" cy="56" r="4"/><circle cx="125" cy="96" r="3"/><circle cx="140" cy="132" r="3"/>
     <circle cx="59" cy="126" r="3"/><circle cx="101" cy="126" r="3"/><circle cx="53" cy="181" r="3"/><circle cx="107" cy="181" r="3"/>
   </g>
-  <g fill="#FFB690"><circle cx="48" cy="235" r="4"/><circle cx="112" cy="235" r="4"/></g>
+  <g fill="#D1D1D1"><circle cx="48" cy="235" r="4"/><circle cx="112" cy="235" r="4"/></g>
 </svg>
+

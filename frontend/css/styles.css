@@ -281,6 +281,8 @@ a:hover { color: var(--texto); }
     text-align: center;
 }
 .video .icono { width: 42px; height: 42px; color: var(--azul); }
+.video.video-reproductor { display: block; padding: 0; overflow: hidden; background: #000; }
+.video-reproductor video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
 
 .ficha-cultural { background: linear-gradient(145deg, #232438, var(--panel) 55%); }
 .ficha-cultural .foto { display: block; overflow: hidden; border: 0; background: var(--fondo-secundario); }

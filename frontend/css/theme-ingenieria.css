@@ -1,0 +1,121 @@
+/* Tema visual basado en la paleta de Ingeniería. */
+:root {
+    --fondo: #f4f4f4;
+    --fondo-secundario: #ffffff;
+    --panel: #ffffff;
+    --superficie: #f4f4f4;
+    --borde: #d1d1d1;
+    --azul: #c4161c;
+    --azul-brillante: #f82e35;
+    --verde: #8f232f;
+    --naranja: #ed1d24;
+    --durazno: #fe6a6f;
+    --texto: #363636;
+    --muted: #666666;
+    --alerta: #c4161c;
+    --radio: 14px;
+}
+
+body {
+    color: var(--texto);
+    background:
+        radial-gradient(ellipse at 86% 8%, #fe6a6f22, transparent 38%),
+        radial-gradient(ellipse at 10% 90%, #d1d1d155, transparent 45%),
+        var(--fondo);
+}
+h1, h2, h3 { color: #510608; }
+a { color: #c4161c; }
+a:hover { color: #8b0304; }
+:focus-visible { outline-color: #ed1d24; }
+
+.cabecera {
+    background: linear-gradient(105deg, #510608, #8f232f);
+    border-bottom-color: #a6243a;
+    box-shadow: 0 8px 22px #51060825;
+}
+.marca, .marca small { color: #ffffff; }
+.marca small { color: #fe6a6f; }
+.menu { background: #741823; }
+.menu button { color: #ffffff; }
+.menu button:hover { color: #ffffff; background: #a6243a; }
+.pie { background: #ffffff; }
+
+.insignia { color: #8f232f; background: #f4f4f4; border: 1px solid #d1d1d1; }
+.insignia.verde { color: #8f232f; background: #f4f4f4; }
+.insignia.naranja { color: #ffffff; background: #741823; border-color: #a6243a; }
+.form-select { color: #363636; background-color: #ffffff; border-color: #d1d1d1; }
+.form-check-input { border-color: #9e9e9e; }
+.form-check-input:checked { background-color: #ed1d24; border-color: #ed1d24; }
+
+.btn { box-shadow: 0 4px 12px #51060818; }
+.btn-celeste {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: #8f232f;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #741823;
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-active-bg: #741823;
+}
+.btn-naranja {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: #ed1d24;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #c4161c;
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-active-bg: #c4161c;
+}
+.btn-panel {
+    --bs-btn-color: #510608;
+    --bs-btn-bg: #f4f4f4;
+    --bs-btn-border-color: #d1d1d1;
+    --bs-btn-hover-color: #8b0304;
+    --bs-btn-hover-bg: #ffffff;
+    --bs-btn-hover-border-color: #c4161c;
+}
+
+.panel, .portada { box-shadow: 0 14px 32px #00000010; }
+.panel { background: #ffffff; }
+.panel h2 { color: #510608; }
+.recuadro { background: #f4f4f4; }
+.portada {
+    border-color: #8f232f;
+    background:
+        radial-gradient(ellipse at 95% 2%, #a6243a, transparent 54%),
+        linear-gradient(135deg, #510608, #8f232f 70%, #741823);
+}
+.portada h1, .portada p, .portada .secundario { color: #ffffff; }
+.portada .celeste { color: #fe6a6f; }
+.portada .insignia.verde { color: #ffffff; background: #a6243a; border-color: #fe6a6f; }
+.icono-bloque { color: #8f232f; background: #f4f4f4; }
+.icono-bloque.naranja { color: #c4161c; background: #f4f4f4; }
+.icono-bloque.verde { color: #8f232f; background: #f4f4f4; }
+
+.caribe { --acento: #ed1d24; --rotulo: #9e0b0f; }
+.pacifica { --acento: #8f232f; --rotulo: #8f232f; }
+.andina { --acento: #f82e35; --rotulo: #c4161c; }
+.orinoquia { --acento: #78313e; --rotulo: #78313e; }
+.mapa { background: radial-gradient(ellipse at center, #f4f4f4, #ffffff 72%); }
+.tarjeta-danza { color: #363636; background: #ffffff; box-shadow: 0 8px 18px #0000000b; }
+.tarjeta-danza:hover, .tarjeta-danza:focus-within, .tarjeta-danza:has(input:checked) {
+    border-color: var(--acento);
+    background: #f4f4f4;
+    box-shadow: 0 0 0 1px var(--acento), 0 10px 22px #51060817;
+}
+
+.visor {
+    color: #fe6a6f;
+    background: radial-gradient(ellipse at center, #363636, #000000 75%);
+}
+.visor-mensaje, .visor-mensaje h3, .visor-mensaje p { color: #ffffff; }
+.visor-mensaje p { text-shadow: 0 1px 3px #000000; }
+.visor-espera .esqueleto { opacity: .52; }
+#video-camara { background: #000000; }
+.hud { color: #363636; background: #f4f4f4; }
+.video {
+    color: #ffffff;
+    background: radial-gradient(ellipse at center, #78313e, #510608 75%);
+}
+.video .icono { color: #fe6a6f; }
+.ficha-cultural { background: #ffffff; }
+.ficha-cultural .foto { background: #363636; }
+.esqueleto-resultado { background: #f4f4f4; color: #666666; }

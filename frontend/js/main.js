@@ -9,6 +9,12 @@ const fotosCulturales = {
     bambuco: "assets/images/mapa-bambuco.jpg",
     joropo: "assets/images/mapa-joropo.jpg"
 };
+const videosCulturales = {
+    cumbia: "assets/videos/cumbia.mp4",
+    currulao: "assets/videos/currulao.mp4",
+    bambuco: "assets/videos/bambuco.mp4",
+    joropo: "assets/videos/joropo.mp4"
+};
 
 function seleccionarDanza(danza) {
     fichas.forEach((ficha) => {
@@ -22,7 +28,14 @@ function seleccionarDanza(danza) {
     const foto = document.querySelector("#foto-cultural");
     foto.src = fotosCulturales[danza];
     foto.alt = `Fotografía de ${nombre}`;
-    document.querySelector("#video-cultural").textContent = `Video de ${nombre}`;
+    const video = document.querySelector("#video-cultural");
+    video.poster = fotosCulturales[danza];
+    video.setAttribute("aria-label", `Video de ${nombre}`);
+    if (video.getAttribute("src") !== videosCulturales[danza]) {
+        video.pause();
+        video.src = videosCulturales[danza];
+        video.load();
+    }
     document.querySelector("#danza-seleccionada").textContent = `Ficha cultural de ${nombre}`;
 }
 
