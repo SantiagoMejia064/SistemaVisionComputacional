@@ -203,6 +203,7 @@ async function encenderCamara() {
     const solicitud = ++solicitudCamara;
     const id = dispositivos.value;
 
+    detenerDeteccion();
     liberarVideo();
 
     activar.disabled = true;
