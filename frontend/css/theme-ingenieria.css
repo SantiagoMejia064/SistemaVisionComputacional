@@ -119,3 +119,110 @@ a:hover { color: #8b0304; }
 .ficha-cultural { background: #ffffff; }
 .ficha-cultural .foto { background: #363636; }
 .esqueleto-resultado { background: #f4f4f4; color: #666666; }
+
+
+/* Fondo ambiental y titulo sin barra de navegacion. */
+body { position: relative; isolation: isolate; }
+.titulo-sitio {
+    padding-top: 26px;
+    padding-bottom: 4px;
+    color: #510608;
+    font-family: Outfit, system-ui, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 750;
+    text-align: center;
+    letter-spacing: -.025em;
+}
+.fondo-animado {
+    position: fixed; inset: 0; z-index: -1; overflow: hidden;
+    pointer-events: none; background: #f7f0ed;
+}
+.fondo-animado span {
+    position: absolute; width: 85vmax; height: 85vmax; border-radius: 50%;
+    top: -45vmax; left: -30vmax;
+    background: radial-gradient(circle, #ed606338 0%, #ef95951a 40%, transparent 68%);
+    animation: corriente-fondo 22s ease-in-out infinite alternate;
+    will-change: transform;
+}
+.fondo-animado span:nth-child(2) {
+    top: 15vh; left: 45vw;
+    background: radial-gradient(circle, #e8ae5c30 0%, #f2d9ac18 40%, transparent 68%);
+    animation-duration: 28s; animation-delay: -10s;
+}
+.fondo-animado span:nth-child(3) {
+    top: 45vh; left: -25vw;
+    background: radial-gradient(circle, #a85c7326 0%, #d8b4bf14 40%, transparent 68%);
+    animation-duration: 25s; animation-delay: -17s;
+}
+@keyframes corriente-fondo {
+    from { transform: translate3d(-3vw, -3vh, 0) scale(1); }
+    to { transform: translate3d(16vw, 15vh, 0) scale(1.18); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .fondo-animado span { animation: none; will-change: auto; }
+}
+
+
+/* Instrucciones con tipografia cinetica y orbitas. */
+.intro-postura {
+    position: relative; isolation: isolate; overflow: hidden; max-width: 1040px;
+    margin: 0 auto; padding: clamp(24px, 5vw, 64px); border-radius: 24px;
+    background: linear-gradient(125deg, #430b16, #8f232f 65%, #b33c46);
+    color: #fff; box-shadow: 0 24px 65px #51060825;
+}
+.intro-contenido { position: relative; z-index: 1; }
+.intro-etiqueta { color: #ffb5a7; letter-spacing: .18em; font-size: .7rem; font-weight: 750; }
+.intro-postura h2 { color: #fff; font-size: clamp(2.5rem, 6vw, 4.7rem); line-height: 1.08; letter-spacing: -.045em; margin: 20px 0; }
+.intro-postura h2 span { display: inline-block; }
+.intro-postura h2 span:last-child { color: #ffc28f; }
+.intro-descripcion { color: #f5d4d5; font-size: 1.05rem; }
+.intro-pasos { list-style: none; padding: 0; margin: 30px 0; display: grid; gap: 12px; max-width: 740px; }
+.intro-pasos li { display: flex; gap: 18px; padding: 18px; border: 1px solid #ffffff26; border-radius: 14px; background: #ffffff09; }
+.intro-numero { font: 650 1.8rem Outfit, sans-serif; color: #ffc28f; line-height: 1; }
+.intro-pasos h3 { color: #fff; margin-bottom: 6px; font-size: 1.12rem; }
+.intro-pasos p { color: #f3dfe0; margin: 0; line-height: 1.65; }
+.intro-acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+.intro-volver { color: #fff; border: 1px solid #ffffff50; }
+.intro-volver:hover { color: #fff; background: #ffffff18; border-color: #fff; }
+.intro-nota { color: #ebc9cb; font-size: .75rem; margin: 16px 0 0; }
+.intro-orbitas { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.intro-orbitas i { position: absolute; width: 620px; height: 620px; right: -330px; top: -100px; border: 1px solid #ffc28f35; border-radius: 43%; animation: orbita-intro 26s linear infinite; }
+.intro-orbitas i:nth-child(2) { width: 760px; height: 760px; right: -400px; top: -170px; animation-direction: reverse; }
+.intro-orbitas i:nth-child(3) { width: 900px; height: 900px; right: -470px; top: -240px; animation-duration: 34s; }
+.intro-postura:not([hidden]) h2 span { animation: texto-intro .8s cubic-bezier(.16,1,.3,1) both; }
+.intro-postura h2 span:nth-child(2) { animation-delay: .18s; }
+.intro-postura h2 span:nth-child(3) { animation-delay: .36s; }
+.intro-postura:not([hidden]) .intro-pasos li { animation: entrada-danza .7s both; }
+.intro-pasos li:nth-child(1) { animation-delay: .45s; }
+.intro-pasos li:nth-child(2) { animation-delay: .6s; }
+.intro-pasos li:nth-child(3) { animation-delay: .75s; }
+@keyframes texto-intro { from { opacity: 0; transform: translateY(35px) rotate(4deg); } to { opacity: 1; transform: translateY(0) rotate(0); } }
+@keyframes orbita-intro { to { transform: rotate(360deg); } }
+/* Entrada escalonada al abrir el visor. */
+#paso-visor:not([hidden]) #panel-camara {
+    animation: entrada-panel-camara .8s cubic-bezier(.16, 1, .3, 1) both;
+}
+#paso-visor:not([hidden]) #resultados {
+    animation: entrada-panel-resultados .85s .16s cubic-bezier(.16, 1, .3, 1) both;
+}
+#paso-visor:not([hidden]) #resultados .row > div {
+    animation: entrada-danza .65s .3s ease-out both;
+}
+#paso-visor:not([hidden]) #resultados .row > div:nth-child(2) { animation-delay: .4s; }
+#paso-visor:not([hidden]) #resultados .row > div:nth-child(3) { animation-delay: .5s; }
+@keyframes entrada-panel-camara {
+    from { opacity: 0; transform: translateY(24px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes entrada-panel-resultados {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #paso-visor #panel-camara,
+    #paso-visor #resultados,
+    #paso-visor #resultados .row > div { animation: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .intro-postura *, .intro-postura *::before, .intro-postura *::after { animation: none !important; }
+}

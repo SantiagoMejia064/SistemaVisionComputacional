@@ -74,10 +74,10 @@ class IntegracionTest(unittest.TestCase):
                         confianza=0.95 if clase else 0, personas=1, keypoints=[],
                         puntos_visibles=17, confianza_pose=0.98)
         with patch.object(api, "analizar_frame", side_effect=lambda _: prediccion("cumbia")):
-            for n in range(1, 6):
+            for n in range(1, 4):
                 salida = self.enviar().json
                 self.assertEqual(salida["consecutivas"], n)
-                self.assertEqual(salida["confirmada"], n == 5)
+                self.assertEqual(salida["confirmada"], n == 3)
             self.assertEqual(salida["danza"], "cumbia")
             self.assertEqual(self.enviar(sesion=otra).json["consecutivas"], 1)
         with patch.object(api, "analizar_frame", side_effect=lambda _: prediccion(None)):
@@ -88,7 +88,7 @@ class IntegracionTest(unittest.TestCase):
             self.assertIsNone(salida["danza"])
 
     def test_cambio_clase_expiracion_y_error(self):
-        api.SESIONES[self.sesion].update(clase="cumbia", consecutivas=4)
+        api.SESIONES[self.sesion].update(clase="cumbia", consecutivas=2)
         with patch.object(api, "analizar_frame", return_value={
             "estado":"analizando", "clase":"bambuco", "confianza":0.96
         }):

@@ -1,5 +1,6 @@
 // Flask sirve la interfaz; también se admite Live Server en localhost.
 const API_BASE = location.port === "5000" ? "" : "http://127.0.0.1:5000";
+const PAUSA_ENTRE_CAPTURAS_MS = 400;
 const videoDeteccion = document.querySelector("#video-camara");
 const cnnDanza = document.querySelector("#cnn-danza");
 const cnnRegion = document.querySelector("#cnn-region");
@@ -72,7 +73,7 @@ async function enviarFrame(ejecucion) {
             mostrarResultado(resultado);
         }
         if (ejecucionDeteccion === ejecucion) {
-            ejecucion.temporizador = setTimeout(() => enviarFrame(ejecucion), 700);
+            ejecucion.temporizador = setTimeout(() => enviarFrame(ejecucion), PAUSA_ENTRE_CAPTURAS_MS);
         }
     } catch (error) {
         informarError(error, ejecucion);
@@ -130,8 +131,9 @@ function mostrarResultado(resultado) {
     const tarjeta = document.querySelector('input[name="danza"][value="' + danza + '"]');
     if (tarjeta) tarjeta.checked = true;
     seleccionarDanza(danza);
-    apagarCamara();
+    pausarCamaraConfirmada();
     cambiarCamara("resultado");
+    mostrarContenidoCultural();
     estadoResultados.textContent = "Danza reconocida";
     document.getElementById("resultados").scrollIntoView({ behavior:"smooth", block:"start" });
 }

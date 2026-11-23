@@ -334,3 +334,48 @@ details > summary { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
     .tarjeta-danza { transition: none; }
 }
+
+/* Pasos de la experiencia */
+[data-paso][hidden] { display: none !important; }
+.menu button[aria-current="step"] { color: var(--texto); background: var(--superficie); }
+#paso-repertorio { max-width: 1040px; margin-inline: auto; }
+#paso-repertorio .tarjeta-danza .foto { max-height: 320px; }
+
+/* Entrada del repertorio: luces y ondas inspiradas en el movimiento. */
+.portada-animada { position: relative; isolation: isolate; overflow: hidden; }
+.portada-animada > :not(.ritmo-visual) { position: relative; z-index: 1; }
+.ritmo-visual { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.ritmo-visual::before, .ritmo-visual::after {
+    content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%;
+    background: radial-gradient(circle, #ff817b55, transparent 68%);
+    right: -60px; top: -180px; animation: luz-danza 9s ease-in-out infinite alternate;
+}
+.ritmo-visual::after { right: 20%; top: 40%; background: radial-gradient(circle, #ffb86330, transparent 68%); animation-delay: -4s; }
+.ritmo-visual i {
+    position: absolute; right: -90px; top: 50%; width: 330px; height: 330px;
+    border: 1px solid #ffffff20; border-radius: 42%;
+    transform: translateY(-50%) rotate(-25deg); animation: onda-danza 18s linear infinite;
+}
+.ritmo-visual i:nth-child(2) { width: 390px; height: 390px; animation-direction: reverse; }
+.ritmo-visual i:nth-child(3) { width: 450px; height: 450px; animation-duration: 24s; }
+.ritmo-visual i:nth-child(4) { width: 510px; height: 510px; animation-direction: reverse; animation-duration: 28s; }
+.ritmo-visual i:nth-child(5) { width: 570px; height: 570px; animation-duration: 32s; }
+#paso-repertorio:not([hidden]) .portada-animada { animation: entrada-danza .75s ease-out both; }
+#paso-repertorio:not([hidden]) .portada-animada h1 { animation: entrada-danza .85s .12s ease-out both; }
+#paso-repertorio:not([hidden]) #danzas fieldset > .col { animation: entrada-danza .65s ease-out both; }
+#danzas fieldset > .col:nth-of-type(1) { animation-delay: .15s; }
+#danzas fieldset > .col:nth-of-type(2) { animation-delay: .25s; }
+#danzas fieldset > .col:nth-of-type(3) { animation-delay: .35s; }
+#danzas fieldset > .col:nth-of-type(4) { animation-delay: .45s; }
+#paso-repertorio .tarjeta-danza { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+#paso-repertorio .tarjeta-danza:hover { transform: translateY(-5px); }
+@keyframes entrada-danza { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes luz-danza { to { transform: translate(-90px, 50px) scale(1.25); } }
+@keyframes onda-danza { to { transform: translateY(-50%) rotate(335deg); } }
+@media (prefers-reduced-motion: reduce) {
+    #paso-repertorio *, #paso-repertorio *::before, #paso-repertorio *::after { animation: none !important; transition: none !important; }
+    #paso-repertorio .tarjeta-danza:hover { transform: none; }
+}
+
+#captura-confirmada { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+#mapa-cultural[hidden], #panel-cultural[hidden] { display: none !important; }

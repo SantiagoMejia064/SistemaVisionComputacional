@@ -20,8 +20,8 @@ def main():
             clase = resultado["clase"]
             consecutivas = (consecutivas + 1 if clase == clase_anterior else 1) if clase else 0
             clase_anterior = clase
-            texto = f"{clase or resultado['estado']} {resultado['confianza']:.0%} ({min(consecutivas, 5)}/5)"
-            if consecutivas >= 5:
+            texto = f"{clase or resultado['estado']} {resultado['confianza']:.0%} ({min(consecutivas, 3)}/3)"
+            if consecutivas >= 3:
                 texto += " CONFIRMADA"
             for x, y, confianza in resultado["keypoints"]:
                 if confianza >= 0.5:

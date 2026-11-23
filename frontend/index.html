@@ -8,65 +8,32 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/theme-ingenieria.css">
+    <link rel="stylesheet" href="css/escenario.css">
     <script defer src="js/deteccion.js"></script>
     <script defer src="js/main.js"></script>
 </head>
 <body>
     <button class="visually-hidden-focusable position-absolute z-3 p-2 bg-dark" type="button" data-ir="contenido">Saltar al contenido</button>
-    <header class="cabecera">
-        <div class="container-fluid ancho d-flex align-items-center justify-content-between flex-wrap py-2">
-            <div class="marca">Colombia en Movimiento<small>EXPERIENCIA INTERACTIVA PDI</small></div>
-            <nav class="menu" aria-label="Paneles de la experiencia">
-                <button type="button" data-ir="danzas">Danzas</button>
-                <button type="button" data-ir="panel-camara">Visor</button>
-                <button type="button" data-ir="resultados">Resultados</button>
-            </nav>
-            <div class="d-flex flex-wrap align-items-center gap-2">
-                <span class="insignia verde"><span class="punto"></span>Instalación local</span>
-                <span class="insignia naranja" id="estado-dispositivo" role="status">Cámara apagada</span>
-            </div>
-        </div>
-    </header>
+    <div class="fondo-animado" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="titulo-sitio container-fluid ancho">Colombia en Movimiento</div>
 
     <main class="container-fluid ancho py-3 py-lg-4" id="contenido" tabindex="-1">
-        <div class="row g-4 align-items-start">
-            <div class="col-lg-7 vstack gap-3">
-                <section class="portada p-3 p-sm-4">
+        <div id="paso-repertorio" class="vstack gap-3" data-paso="repertorio">
+<section class="portada portada-animada p-3 p-sm-4">
+                    <div class="ritmo-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
                     <div class="d-flex flex-wrap gap-2 align-items-center">
-                        <span class="insignia verde"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#nodes"></use></svg> EXPERIENCIA INTERACTIVA PDI</span>
+                        <span class="insignia verde"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#nodes"></use></svg> EXPERIENCIA INTERACTIVA</span>
                         <span class="mini fw-semibold secundario">EXHIBICIÓN LOCAL</span>
                     </div>
                     <h1>Descubre las danzas tradicionales de <span class="celeste">Colombia</span></h1>
                     <p class="mb-2">Explora cuatro regiones a través de sus danzas y ensaya las posturas del repertorio frente al visor.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <button type="button" class="btn btn-naranja" data-activar-camara data-ir="panel-camara"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#camera"></use></svg> <span id="accion-camara-portada">Activar cámara</span></button>
-                        <button type="button" class="btn btn-panel" data-ir="danzas"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#map"></use></svg> Explorar danzas</button>
-                    </div>
-                </section>
-                <section class="panel p-3" id="mapa-cultural">
-                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-2">
-                        <h2 class="mb-0"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#map"></use></svg></span> Geografía coreográfica de Colombia</h2>
-                        <span class="insignia">MAPA CULTURAL</span>
-                    </div>
-                    <div class="mapa">
-                        <object type="image/svg+xml" data="assets/maps/colombia.svg" aria-label="Mapa cultural de Colombia">
-                            <p>Cumbia (Caribe), Currulao (Pacífica), Bambuco (Andina) y Joropo (Orinoquía).</p>
-                        </object>
-                        <ul class="mapa-leyenda list-unstyled mb-2 px-2">
-                            <li class="region-texto caribe"><span class="punto"></span> Caribe · Cumbia</li>
-                            <li class="region-texto pacifica"><span class="punto"></span> Pacífica · Currulao</li>
-                            <li class="region-texto andina"><span class="punto"></span> Andina · Bambuco</li>
-                            <li class="region-texto orinoquia"><span class="punto"></span> Orinoquía · Joropo</li>
-                        </ul>
-                    </div>
-                    <p class="mini mb-0 mt-2">Pasa el cursor por una región para conocer su danza. Usa el repertorio para explorar cada danza.</p>
-                </section>
-                <section id="danzas" tabindex="-1" aria-labelledby="titulo-danzas">
+<p class="mini mb-0">Paso 1 de 2 &middot; Conoce las poses y luego contin&uacute;a al visor.</p></section>
+<section id="danzas" tabindex="-1" aria-labelledby="titulo-danzas">
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-2">
                         <h2 class="mb-0" id="titulo-danzas">Repertorio de danzas</h2>
                         <span class="insignia verde">4 danzas</span>
                     </div>
-                    <p class="mini mb-2">Elige una tarjeta para cambiar la ficha cultural.</p>
+                    <p class="mini mb-2">Explora las im&aacute;genes y elige una danza para consultar su ficha en el siguiente paso.</p>
                     <fieldset class="row row-cols-2 row-cols-sm-4 g-2">
                         <legend class="visually-hidden">Danza para explorar</legend>
                         <div class="col">
@@ -114,17 +81,110 @@
                             </label>
                         </div>
                     </fieldset>
-                    <button class="btn btn-panel btn-sm mt-3" type="button" data-ir="panel-cultural">Consultar la ficha cultural</button>
+                    <div class="d-flex justify-content-end mt-3"><button class="btn btn-celeste" type="button" data-ir="instrucciones-postura">Probar la danza</button></div>
                 </section>
+        </div>
+        <section id="instrucciones-postura" class="intro-postura" data-paso="instrucciones" tabindex="-1" aria-labelledby="titulo-instrucciones" hidden>
+            <div class="intro-orbitas" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="intro-contenido">
+                <p class="intro-etiqueta">TU CUERPO CUENTA UNA HISTORIA</p>
+                <h2 id="titulo-instrucciones" aria-label="Activa. Baila. Descubre."><span aria-hidden="true">Activa.</span> <span aria-hidden="true">Baila.</span> <span aria-hidden="true">Descubre.</span></h2>
+                <p class="intro-descripcion">Una pose te conecta con las danzas de Colombia.</p>
+                <ol class="intro-pasos">
+                    <li><span class="intro-numero" aria-hidden="true">01</span><div><h3>Activa tu cámara</h3><p>Permite el acceso y ubícate con buena luz. Deja todo tu cuerpo visible y aparece solo en el encuadre.</p></div></li>
+                    <li><span class="intro-numero" aria-hidden="true">02</span><div><h3>Dale vida a la danza</h3><p>Muévete al ritmo que imaginas y luego mantén la pose del repertorio unos segundos, hasta confirmar el reconocimiento.</p></div></li>
+                    <li><span class="intro-numero" aria-hidden="true">03</span><div><h3>Descubre su historia</h3><p>Al reconocer la pose, la imagen se congelará y aparecerán el mapa, la ficha cultural y un video de la danza.</p></div></li>
+                </ol>
+                <div class="intro-acciones">
+                    <button class="btn btn-light" type="button" data-activar-camara data-ir="panel-camara">Activar cámara y comenzar <span aria-hidden="true">→</span></button>
+                    <button class="btn intro-volver" type="button" data-ir="danzas">Volver al repertorio</button>
+                </div>
+                <p class="intro-nota">Al reconocer tu pose, el video se reproducirá con sonido.</p>
             </div>
+        </section>
+        <div id="paso-visor" data-paso="visor" hidden>
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                <button class="btn btn-panel" type="button" data-ir="danzas">&larr; Volver al repertorio</button>
+                <span class="insignia">Paso 2 de 2 &middot; Prueba tu postura</span>
+            </div>
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-7 vstack gap-3">
 
-            <div class="col-lg-5 vstack gap-3">
-                <section class="panel overflow-hidden" id="panel-camara" tabindex="-1" aria-labelledby="titulo-camara">
+<section class="panel p-3" id="resultados" tabindex="-1" aria-labelledby="titulo-resultados">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-3">
+                        <h2 class="mb-0" id="titulo-resultados"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#nodes"></use></svg></span> Resultados de postura</h2>
+                        <span class="insignia" id="estado-resultados" role="status">Esperando captura</span>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <article class="recuadro p-3 h-100" id="resultado-cnn">
+                                <h3 class="celeste">Danza reconocida · MLP</h3>
+                                <dl class="datos-resultado mb-0">
+                                    <dt>Danza</dt><dd id="cnn-danza">Pendiente</dd>
+                                    <dt>Región</dt><dd id="cnn-region">—</dd>
+                                    <dt>Confianza</dt><dd id="cnn-confianza">—</dd>
+                                    <dt>Probabilidad de pose · CNN</dt><dd id="cnn-pose">—</dd>
+                                </dl>
+                            </article>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <article class="recuadro p-3 h-100" id="resultado-yolo">
+                                <h3 class="verde">YOLO Pose · Puntos corporales</h3>
+                                <dl class="datos-resultado mb-2">
+                                    <dt>Persona detectada</dt><dd id="yolo-persona">Pendiente</dd>
+                                    <dt>Puntos corporales</dt><dd id="yolo-puntos">—</dd>
+                                </dl>
+                                <div class="esqueleto-resultado rounded-3 p-2">
+                                    <img src="assets/icons/postura.svg" alt="">
+                                    <small id="yolo-estado-esqueleto">Silueta de referencia</small>
+                                    <svg id="yolo-esqueleto" role="img" aria-label="Esqueleto detectado" hidden></svg>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-12">
+                            <article class="recuadro p-3 h-100" id="resultado-angulos">
+                                <h3 class="naranja">Ángulos · Próximamente</h3>
+                                <dl class="datos-resultado mb-2">
+                                    <dt>Ángulos calculados</dt><dd id="angulos-calculados">—</dd>
+                                    <dt>Comparación con referencia</dt><dd id="angulos-referencia">Pendiente</dd>
+                                    <dt>Cumplimiento</dt><dd id="angulos-cumplimiento">—</dd>
+                                </dl>
+                                <p class="mini mb-0" id="angulos-recomendaciones">La evaluación por ángulos aún no está implementada y no interviene en el reconocimiento.</p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <button type="button" class="btn btn-panel" data-activar-camara data-ir="panel-camara">Preparar otro intento</button>
+                        <button type="button" class="btn btn-panel" data-ir="danzas">Explorar otra danza</button>
+                    </div>
+                </section>
+<div id="mapa-cultural-origen"><section class="panel p-3" id="mapa-cultural" hidden>
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-2">
+                        <h2 class="mb-0"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#map"></use></svg></span> Geografía coreográfica de Colombia</h2>
+                        <span class="insignia">MAPA CULTURAL</span>
+                    </div>
+                    <div class="mapa">
+                        <object type="image/svg+xml" data="assets/maps/colombia.svg" aria-label="Mapa cultural de Colombia">
+                            <p>Cumbia (Caribe), Currulao (Pacífica), Bambuco (Andina) y Joropo (Orinoquía).</p>
+                        </object>
+                        <ul class="mapa-leyenda list-unstyled mb-2 px-2">
+                            <li class="region-texto caribe"><span class="punto"></span> Caribe · Cumbia</li>
+                            <li class="region-texto pacifica"><span class="punto"></span> Pacífica · Currulao</li>
+                            <li class="region-texto andina"><span class="punto"></span> Andina · Bambuco</li>
+                            <li class="region-texto orinoquia"><span class="punto"></span> Orinoquía · Joropo</li>
+                        </ul>
+                    </div>
+                    <p class="mini mb-0 mt-2">La región resaltada corresponde a la danza reconocida. Pasa el cursor para explorar las demás.</p>
+                </section></div>
+                </div>
+                <div class="col-lg-5 vstack gap-3">
+<section class="panel overflow-hidden" id="panel-camara" tabindex="-1" aria-labelledby="titulo-camara">
                     <div class="hud d-flex flex-wrap justify-content-between align-items-center gap-2">
                         <h2 class="h6 mb-0" id="titulo-camara"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#camera"></use></svg> Cámara y detección</h2>
                         <span class="insignia naranja" id="estado-camara" role="status">En espera</span>
                     </div>
                     <div class="visor visor-espera" id="visor-camara">
+                        <canvas id="captura-confirmada" hidden aria-label="Postura reconocida"></canvas>
                         <video id="video-camara" autoplay playsinline muted hidden aria-label="Vista de cámara"></video>
                         <img class="esqueleto" src="assets/icons/postura.svg" alt="">
                         <div class="visor-mensaje">
@@ -135,13 +195,14 @@
                     </div>
                     <div class="p-3">
                         <div class="recuadro p-2 mb-3">
+                            <p class="mb-2"><span class="insignia naranja" id="estado-dispositivo" role="status">Cámara apagada</span></p>
                             <label class="form-label mini fw-semibold mb-1" for="dispositivo-camara">Cámara del dispositivo</label>
                             <select class="form-select form-select-sm mb-2" id="dispositivo-camara" aria-describedby="ayuda-dispositivo">
                                 <option value="">Cámara predeterminada</option>
                             </select>
                             <p class="mini mb-2" id="ayuda-dispositivo">Activa la cámara y concede el permiso para ver las opciones disponibles.</p>
                             <div class="d-flex flex-wrap gap-2">
-                                <button type="button" class="btn btn-celeste" id="activar-camara" data-activar-camara>Activar cámara</button>
+                                <button type="button" class="btn btn-celeste" id="activar-camara" data-activar-camara><span id="accion-camara-portada">Activar cámara</span></button>
                                 <button type="button" class="btn btn-panel" id="detener-camara" hidden>Apagar cámara</button>
                             </div>
                             <p class="alert alert-danger mini p-2 mt-2 mb-0" id="error-dispositivo" role="alert" hidden></p>
@@ -164,7 +225,7 @@
                         </details>
 
                         <div class="recuadro p-2 mb-2" id="pipeline-pdi" hidden>
-                            <p class="tecnico mb-1 celeste">PIPELINE PDI · VISTA DE DEMOSTRACIÓN</p>
+                            <p class="tecnico mb-1 celeste">PROCESAMIENTO · VISTA DE DEMOSTRACIÓN</p>
                             <div class="d-flex flex-wrap gap-1">
                                 <span class="insignia">Captura temporal</span>
                                 <span class="insignia">CNN y YOLO Pose</span>
@@ -196,8 +257,7 @@
                         </div>
                     </div>
                 </section>
-
-                <section class="panel p-3 ficha-cultural" id="panel-cultural" tabindex="-1" aria-labelledby="titulo-cultural">
+<section class="panel p-3 ficha-cultural" id="panel-cultural" tabindex="-1" aria-labelledby="titulo-cultural" hidden>
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-2">
                         <h2 class="mb-0" id="titulo-cultural"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#music"></use></svg></span> Ficha cultural</h2>
                         <span class="insignia" id="region-cultural">Caribe</span>
@@ -207,12 +267,15 @@
                             <div class="foto h-100"><img id="foto-cultural" src="assets/images/mapa-cumbia.webp" alt="Fotografía de Cumbia"></div>
                         </div>
                         <div class="col-7">
-                            <div class="video video-reproductor rounded-3">
+                            <div id="video-cultural-origen"><div class="video video-reproductor rounded-3" id="contenedor-video-cultural">
                                 <video id="video-cultural" src="assets/videos/cumbia.mp4" poster="assets/images/mapa-cumbia.webp" controls preload="metadata" playsinline aria-label="Video de Cumbia">
                                     Tu navegador no admite videos MP4.
                                 </video>
-                            </div>
+                            </div></div>
                         </div>
+                    </div>
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                        <p class="mini mb-0" id="estado-video" role="status">El video comenzará al reconocer la pose.</p>
                     </div>
                     <p id="danza-seleccionada" class="visually-hidden" role="status"></p>
                     <article class="caribe" data-ficha="cumbia" data-region="Caribe">
@@ -256,63 +319,33 @@
                         </details>
                     </article>
                 </section>
+                </div>
             </div>
         </div>
-
-        <section class="panel p-3 p-sm-4 mt-4" id="resultados" tabindex="-1" aria-labelledby="titulo-resultados">
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 cabecera-panel mb-3">
-                <h2 class="mb-0" id="titulo-resultados"><span class="celeste"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#nodes"></use></svg></span> Resultados de postura</h2>
-                <span class="insignia" id="estado-resultados" role="status">Esperando captura</span>
-            </div>
-            <div class="row row-cols-1 row-cols-md-3 g-3">
-                <div class="col">
-                    <article class="recuadro p-3 h-100" id="resultado-cnn">
-                        <h3 class="celeste">Danza reconocida · MLP</h3>
-                        <dl class="datos-resultado mb-0">
-                            <dt>Danza</dt><dd id="cnn-danza">Pendiente</dd>
-                            <dt>Región</dt><dd id="cnn-region">—</dd>
-                            <dt>Confianza</dt><dd id="cnn-confianza">—</dd>
-                            <dt>Probabilidad de pose · CNN</dt><dd id="cnn-pose">—</dd>
-                        </dl>
-                    </article>
-                </div>
-                <div class="col">
-                    <article class="recuadro p-3 h-100" id="resultado-yolo">
-                        <h3 class="verde">YOLO Pose · Puntos corporales</h3>
-                        <dl class="datos-resultado mb-2">
-                            <dt>Persona detectada</dt><dd id="yolo-persona">Pendiente</dd>
-                            <dt>Puntos corporales</dt><dd id="yolo-puntos">—</dd>
-                        </dl>
-                        <div class="esqueleto-resultado rounded-3 p-2">
-                            <img src="assets/icons/postura.svg" alt="">
-                            <small id="yolo-estado-esqueleto">Silueta de referencia</small>
-                            <svg id="yolo-esqueleto" role="img" aria-label="Esqueleto detectado" hidden></svg>
-                        </div>
-                    </article>
-                </div>
-                <div class="col">
-                    <article class="recuadro p-3 h-100" id="resultado-angulos">
-                        <h3 class="naranja">Ángulos · Próximamente</h3>
-                        <dl class="datos-resultado mb-2">
-                            <dt>Ángulos calculados</dt><dd id="angulos-calculados">—</dd>
-                            <dt>Comparación con referencia</dt><dd id="angulos-referencia">Pendiente</dd>
-                            <dt>Cumplimiento</dt><dd id="angulos-cumplimiento">—</dd>
-                        </dl>
-                        <p class="mini mb-0" id="angulos-recomendaciones">La evaluación por ángulos aún no está implementada y no interviene en el reconocimiento.</p>
-                    </article>
-                </div>
-            </div>
-            <div class="d-flex flex-wrap gap-2 mt-3">
-                <button type="button" class="btn btn-panel" data-camara="preparacion" data-ir="panel-camara">Preparar otro intento</button>
-                <button type="button" class="btn btn-panel" data-ir="danzas">Explorar otra danza</button>
-            </div>
-        </section>
     </main>
 
+    <dialog id="danza-reconocida" class="ventana-danza" aria-labelledby="titulo-danza-reconocida" aria-describedby="descripcion-danza-reconocida">
+        <button type="button" class="cerrar-danza" id="cerrar-danza" aria-label="Cerrar y consultar los resultados">×</button>
+        <div class="ventana-danza-grid">
+            <div class="ventana-danza-texto">
+                <span class="insignia">¡POSE RECONOCIDA!</span>
+                <p class="ventana-danza-antetitulo">Tu movimiento nos lleva a…</p>
+                <h2 id="titulo-danza-reconocida"></h2>
+                <p class="ventana-danza-region" id="region-danza-reconocida"></p>
+                <p id="descripcion-danza-reconocida">Descubre la música, el ritmo y la historia detrás de tu pose.</p>
+                <div id="mapa-danza-destino"></div>
+                <button type="button" class="btn btn-celeste" id="consultar-resultados">Ver mapa y resultados</button>
+            </div>
+            <div class="ventana-danza-multimedia">
+                <div id="video-danza-destino"></div>
+                <div id="estado-video-destino" class="mt-2"></div>
+            </div>
+        </div>
+    </dialog>
     <footer class="pie">
         <div class="container-fluid ancho d-flex flex-wrap gap-2 justify-content-between align-items-center py-2 mini">
             <strong>Colombia en Movimiento · Proyecto universitario</strong>
-            <span class="secundario"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#shield"></use></svg> Uso local · Capturas y resultados temporales al integrar PDI</span>
+            <span class="secundario"><svg class="icono" aria-hidden="true"><use href="assets/icons/interfaz.svg#shield"></use></svg> Uso local · Capturas y resultados temporales</span>
         </div>
     </footer>
 </body>

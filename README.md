@@ -30,13 +30,13 @@ El servidor indica la ruta si falta un modelo. No descarga pesos automáticament
 ## Flujo integrado
 
 1. El navegador abre cámara sin audio e inicia una sesión.
-2. Envía un JPEG. Espera la respuesta y 700 ms antes de la siguiente captura.
+2. Envía un JPEG. Espera la respuesta y 400 ms antes de la siguiente captura, sin solicitudes simultáneas.
 3. YOLO Pose procesa el fotograma completo una vez.
 4. Se exige una sola persona y se recorta su caja con margen del 10 %.
 5. La CNN evalúa el recorte RGB: P(pose) ≥ 0,70.
 6. Se exige confianza ≥ 0,50 en hombros, codos, muñecas, caderas, rodillas y tobillos.
 7. El MLP recibe 17 puntos X/Y normalizados respecto del fotograma original: confianza ≥ 0,85.
-8. Cinco clases consecutivas iguales confirman la danza.
+8. Tres clases consecutivas iguales confirman la danza.
 9. Se actualizan ficha cultural, fotografía, video, región y confianza; se cierra la cámara.
 
 YOLO va antes de la CNN porque el entrenamiento existente usa recortes de personas.

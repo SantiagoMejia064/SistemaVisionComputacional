@@ -16,7 +16,7 @@ else:
 ROOT_DIR = Path(__file__).resolve().parents[2]
 CLASSIFIER_PATH = ROOT_DIR / "models/yolo/pose_classifier.pth"
 YOLO_PATH = ROOT_DIR / "yolo11n-pose.pt"
-UMBRAL = 0.85
+UMBRAL = 0.70
 UMBRAL_CNN = 0.70
 UMBRAL_PUNTO = 0.50
 INFERENCIA_LOCK = Lock()

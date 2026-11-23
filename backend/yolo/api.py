@@ -19,7 +19,7 @@ app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
 CORS(app, resources={r"/api/*": {"origins": [
     r"http://localhost(:\d+)?", r"http://127\.0\.0\.1(:\d+)?"
 ]}})
-CONFIRMACIONES = 5
+CONFIRMACIONES = 3
 SESIONES = {}
 SESIONES_LOCK = Lock()
 TTL = 120

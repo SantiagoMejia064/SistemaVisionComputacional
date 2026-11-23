@@ -109,6 +109,7 @@ let solicitudCamara = 0;
 // ============================================================
 
 function liberarVideo() {
+    document.querySelector("#captura-confirmada").hidden = true;
     video.srcObject?.getTracks().forEach((pista) => pista.stop());
 
     video.srcObject = null;
@@ -204,6 +205,7 @@ async function encenderCamara() {
     const id = dispositivos.value;
 
     detenerDeteccion();
+    ocultarContenidoCultural();
     liberarVideo();
 
     activar.disabled = true;
@@ -451,6 +453,9 @@ document.querySelectorAll("[data-camara], [data-ir]")
                         boton.dataset.ir
                     );
 
+                const paso = panel.closest("[data-paso]");
+                if (paso) mostrarPaso(paso.dataset.paso);
+
                 panel.focus({
                     preventScroll: true
                 });
@@ -470,3 +475,116 @@ document.querySelectorAll("[data-camara], [data-ir]")
             }
         });
     });
+
+
+function mostrarPaso(nombre) {
+    if (nombre === "repertorio") {
+        ocultarContenidoCultural();
+        apagarCamara();
+        document.querySelector("#video-cultural").pause();
+    }
+    document.querySelectorAll("[data-paso]").forEach((paso) => {
+        paso.hidden = paso.dataset.paso !== nombre;
+    });
+    document.querySelectorAll(".menu [data-ir]").forEach((boton) => {
+        if ((boton.dataset.ir === "danzas") === (nombre === "repertorio")) {
+            boton.setAttribute("aria-current", "step");
+        } else {
+            boton.removeAttribute("aria-current");
+        }
+    });
+}
+
+mostrarPaso("repertorio");
+
+
+function ocultarContenidoCultural() {
+    const ventana = document.querySelector("#danza-reconocida");
+    if (ventana.open) ventana.close();
+    document.querySelector("#mapa-cultural").hidden = true;
+    document.querySelector("#panel-cultural").hidden = true;
+    document.querySelector("#video-cultural").pause();
+}
+
+function pausarCamaraConfirmada() {
+    const captura = document.querySelector("#captura-confirmada");
+    const disponible = video.readyState >= 2 && video.videoWidth > 0;
+    if (disponible) {
+        captura.width = video.videoWidth;
+        captura.height = video.videoHeight;
+        captura.getContext("2d").drawImage(video, 0, 0);
+    }
+    apagarCamara();
+    captura.hidden = !disponible;
+    visor.classList.toggle("visor-en-vivo", disponible);
+    estadoDispositivo.textContent = "Postura capturada";
+}
+
+function mostrarContenidoCultural() {
+    document.querySelector("#mapa-cultural").hidden = false;
+    document.querySelector("#panel-cultural").hidden = false;
+    abrirVentanaDanza();
+    const reproductor = document.querySelector("#video-cultural");
+    const estado = document.querySelector("#estado-video");
+    estado.textContent = "Cargando video…";
+    if (reproductor.readyState >= 1) reproductor.currentTime = 0;
+    reproductor.muted = false;
+    reproductor.volume = 1;
+    reproductor.play().catch(() => {
+        if (!document.querySelector("#panel-cultural").hidden) {
+            estado.textContent = "El navegador bloqueó el inicio con sonido. Usa los controles del video para reproducirlo.";
+        }
+    });
+}
+
+const reproductorCultural = document.querySelector("#video-cultural");
+const estadoVideo = document.querySelector("#estado-video");
+reproductorCultural.addEventListener("playing", () => {
+    estadoVideo.textContent = reproductorCultural.muted
+        ? "Video silenciado. Puedes activar el sonido en sus controles."
+        : "Reproduciendo con sonido.";
+});
+reproductorCultural.addEventListener("error", () => {
+    estadoVideo.textContent = "No se pudo cargar el video. Comprueba la conexión con el servidor.";
+});
+
+function abrirVentanaDanza() {
+    const ficha = document.querySelector("[data-ficha]:not([hidden])");
+    document.querySelector("#titulo-danza-reconocida").textContent = ficha.querySelector("h3").textContent;
+    document.querySelector("#region-danza-reconocida").textContent = "Región " + ficha.dataset.region;
+    document.querySelector("#mapa-danza-destino").append(document.querySelector("#mapa-cultural"));
+    actualizarRegionMapa();
+    document.querySelector("#video-danza-destino").append(document.querySelector("#contenedor-video-cultural"));
+    document.querySelector("#estado-video-destino").append(document.querySelector("#estado-video"));
+    const ventana = document.querySelector("#danza-reconocida");
+    if (!ventana.open) ventana.showModal();
+    document.body.classList.add("danza-en-escena");
+}
+
+const ventanaDanza = document.querySelector("#danza-reconocida");
+document.querySelector("#cerrar-danza").addEventListener("click", () => ventanaDanza.close());
+document.querySelector("#consultar-resultados").addEventListener("click", () => ventanaDanza.close());
+ventanaDanza.addEventListener("close", () => {
+    reproductorCultural.pause();
+    document.querySelector("#mapa-cultural-origen").append(document.querySelector("#mapa-cultural"));
+    document.querySelector("#video-cultural-origen").append(document.querySelector("#contenedor-video-cultural"));
+    // El estado vuelve junto al video para conservar los mensajes de reproducción.
+    document.querySelector("#video-cultural-origen").append(estadoVideo);
+    document.body.classList.remove("danza-en-escena");
+    if (!document.querySelector("#paso-visor").hidden) {
+        document.querySelector("#resultados").focus({ preventScroll: true });
+    }
+});
+
+function actualizarRegionMapa() {
+    const mapa = document.querySelector("#mapa-cultural object").contentDocument;
+    if (!mapa) return;
+    const danza = document.querySelector("[data-ficha]:not([hidden])").dataset.ficha;
+    mapa.querySelectorAll(".region").forEach((region) => {
+        const activa = region.dataset.danza === danza;
+        region.classList.toggle("activa", activa);
+        if (activa) region.setAttribute("aria-current", "true");
+        else region.removeAttribute("aria-current");
+    });
+}
+document.querySelector("#mapa-cultural object").addEventListener("load", actualizarRegionMapa);

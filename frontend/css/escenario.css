@@ -1,0 +1,115 @@
+/* Escenario de danza: terciopelo, focos y acentos calidos. */
+:root {
+    color-scheme: dark;
+    --fondo: #130b13; --fondo-secundario: #21121e; --panel: #281621;
+    --superficie: #37212d; --borde: #674351; --texto: #fff2e7;
+    --muted: #d4b9bd; --azul: #ffb89f; --verde: #edc484;
+    --durazno: #ffc184; --radio: 20px;
+    --bs-body-color: #fff2e7; --bs-secondary-color: #d4b9bd;
+}
+body { background: #130b13; color: var(--texto); }
+.fondo-animado { background: radial-gradient(ellipse at 50% 0, #451e32, #130b13 72%); }
+.fondo-animado::after {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0 11.8%, #ffcd9c04 12%, transparent 12.2% 24%);
+}
+.fondo-animado span { background: radial-gradient(ellipse, #fb70543b, transparent 65%); }
+.fondo-animado span:nth-child(2) { background: radial-gradient(ellipse, #e9ab4d29, transparent 65%); }
+.fondo-animado span:nth-child(3) { background: radial-gradient(ellipse, #a8397533, transparent 65%); }
+.titulo-sitio { color: #ffe2bd; font-size: clamp(1.45rem, 3vw, 2rem); padding-top: 30px; }
+.titulo-sitio::after { content: ""; display: block; width: 72px; height: 2px; margin: 14px auto 0; background: linear-gradient(90deg, transparent, #e8b77d, transparent); }
+h1, h2, h3, .panel h2 { color: #fff0de; }
+a { color: #ffc09f; }
+a:hover { color: #fff0de; }
+.portada { border: 1px solid #ac645266; background: radial-gradient(ellipse at 85% 0, #9f493b66, transparent 60%), linear-gradient(120deg, #391724, #5d2637 70%, #321624); box-shadow: 0 24px 65px #0005; }
+#paso-repertorio .portada { padding: clamp(28px, 5vw, 56px) !important; }
+.portada h1 { max-width: 780px; font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.08; margin: 20px 0; }
+.portada p { color: #ead0cd; }
+.portada .celeste { color: #ffc28f; }
+.portada .insignia.verde { background: #ffffff0c; border-color: #dba67466; color: #ffdbb3; }
+.panel, .ficha-cultural { background: linear-gradient(145deg, #301b28, #21131e); border-color: #70434e; box-shadow: 0 18px 50px #0004; }
+.recuadro, .esqueleto-resultado { background: #1b101a; border-color: #63404e; color: #d4b9bd; }
+.insignia, .insignia.verde { color: #f7cc95; background: #3a2530; border-color: #785344; }
+.insignia.naranja { color: #ffdbc1; background: #512536; border-color: #955966; }
+.caribe { --acento: #ff9f7e; --rotulo: #ffb396; }
+.pacifica { --acento: #dcb779; --rotulo: #edca91; }
+.andina { --acento: #e29ab4; --rotulo: #edb5ca; }
+.orinoquia { --acento: #d3a581; --rotulo: #edc49e; }
+#danzas { margin-top: 12px; }
+.tarjeta-danza { padding: 12px; border-radius: 18px; background: linear-gradient(160deg, #39232d, #241520); color: #fff0e3; border-color: #704853; box-shadow: 0 12px 30px #0004; }
+.tarjeta-danza:hover, .tarjeta-danza:focus-within, .tarjeta-danza:has(input:checked) { background: #452735; box-shadow: 0 0 0 1px var(--acento), 0 16px 35px #0005; }
+.tarjeta-danza .foto { border-radius: 10px; }
+.tarjeta-danza .foto img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.tarjeta-danza:hover .foto img { transform: scale(1.04); }
+.btn { padding: 10px 18px; border-radius: 12px; transition: transform .2s, box-shadow .2s, background-color .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-celeste, .btn-naranja {
+    --bs-btn-color: #281018; --bs-btn-bg: #f4b58c; --bs-btn-border-color: #f4b58c;
+    --bs-btn-hover-color: #281018; --bs-btn-hover-bg: #ffcfab; --bs-btn-hover-border-color: #ffcfab;
+    --bs-btn-active-color: #281018; --bs-btn-active-bg: #f4b58c;
+    box-shadow: 0 6px 24px #e48a5830;
+}
+.btn-panel { --bs-btn-color: #ffe2cb; --bs-btn-bg: #3a2530; --bs-btn-border-color: #815361; --bs-btn-hover-color: #fff0de; --bs-btn-hover-bg: #50323f; --bs-btn-hover-border-color: #e0ab81; }
+.form-select { color: #fff0de; background-color: #291822; border-color: #78505c; }
+.form-check-input { background-color: #291822; border-color: #ad8791; }
+.form-check-input:checked { background-color: #d58065; border-color: #ffc28f; }
+.hud { color: #ffe2bd; background: linear-gradient(90deg, #442535, #2c1b27); padding: 14px 18px; }
+.visor { background: radial-gradient(ellipse, #38242d, #100c11 75%); color: #f4be8c; }
+.visor::before { opacity: .7; }
+.datos-resultado { gap: 10px; }
+.datos-resultado dd { color: #ffe3bd; font-weight: 650; }
+.mapa { background: #f5eeee; border-radius: 12px; overflow: hidden; }
+.pie { background: #160e16; border-color: #51323e; color: #e1c0bf; margin-top: 28px; }
+.intro-postura { background: radial-gradient(ellipse at 95% 10%, #af5a3740, transparent 60%), linear-gradient(125deg, #28121e, #652c3b); border: 1px solid #a16b55; box-shadow: 0 24px 65px #0005; }
+#paso-visor:not([hidden]) #panel-camara { animation: abrir-telon .95s cubic-bezier(.16,1,.3,1) both; }
+#mapa-cultural:not([hidden]), #panel-cultural:not([hidden]) { animation: revelar-cultura 1s cubic-bezier(.16,1,.3,1) both; }
+#panel-cultural:not([hidden]) { animation-delay: .15s; }
+@keyframes abrir-telon { from { opacity: 0; clip-path: inset(0 48% round 20px); transform: translateY(16px); } to { opacity: 1; clip-path: inset(0 0 round 20px); transform: translateY(0); } }
+@keyframes revelar-cultura { from { opacity: 0; transform: translateY(28px); filter: brightness(1.6); } to { opacity: 1; transform: translateY(0); filter: brightness(1); } }
+@media (max-width: 575px) { .tarjeta-danza { padding: 9px; } .titulo-sitio { padding-top: 20px; } }
+@media (prefers-reduced-motion: reduce) {
+    #paso-visor #panel-camara, #mapa-cultural, #panel-cultural { animation: none !important; }
+    .tarjeta-danza .foto img, .btn { transition: none; }
+    .tarjeta-danza:hover .foto img, .btn:hover { transform: none; }
+}
+
+
+/* La danza reconocida toma el escenario. */
+body.danza-en-escena { overflow: hidden; }
+.ventana-danza {
+    width: min(1100px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 40px);
+    padding: 0; overflow: auto; color: #fff0de; border: 1px solid #b27b65;
+    border-radius: 24px; background: radial-gradient(ellipse at 0 0, #77344966, transparent 65%), #26131f;
+    box-shadow: 0 35px 120px #0009;
+}
+.ventana-danza::backdrop { background: #100811aa; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.ventana-danza[open] { animation: estreno-danza .8s cubic-bezier(.16,1,.3,1) both; }
+.ventana-danza[open]::backdrop { animation: fondo-estreno .5s ease both; }
+.ventana-danza-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 32px; padding: clamp(28px, 4vw, 56px); }
+.ventana-danza-antetitulo { margin: 28px 0 8px; color: #eac4bd; }
+.ventana-danza h2 { font-size: clamp(2.5rem, 5vw, 4.7rem); line-height: 1.05; color: #ffd09d; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.ventana-danza-region { color: #ffc0a6; font-size: 1.1rem; }
+.ventana-danza-texto .btn { margin-top: 18px; }
+.ventana-danza-multimedia { min-width: 0; }
+.ventana-danza .video-reproductor { border: 1px solid #af786366; border-radius: 16px !important; box-shadow: 0 20px 45px #0005; }
+.cerrar-danza { position: absolute; top: 10px; right: 12px; z-index: 1; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #ffffff40; background: #21101d; color: #ffe4c9; font-size: 26px; line-height: 1; }
+.ventana-danza[open] .ventana-danza-texto { animation: entrada-danza .8s .15s both; }
+.ventana-danza[open] .ventana-danza-multimedia { animation: entrada-danza .8s .25s both; }
+@keyframes estreno-danza { from { opacity: 0; transform: translateY(40px) scale(.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes fondo-estreno { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 767px) { .ventana-danza-grid { grid-template-columns: 1fr; gap: 20px; padding-top: 48px; } .ventana-danza-antetitulo { margin-top: 18px; } }
+@media (prefers-reduced-motion: reduce) { .ventana-danza[open], .ventana-danza[open]::backdrop, .ventana-danza[open] .ventana-danza-texto, .ventana-danza[open] .ventana-danza-multimedia { animation: none; } }
+
+
+/* Grande premiere avec carte de la region reconnue. */
+.ventana-danza { width: min(1480px, calc(100% - 40px)); }
+.ventana-danza-grid { grid-template-columns: 1fr 1.25fr; gap: 36px; padding: clamp(28px, 3.5vw, 56px); }
+#mapa-danza-destino { margin-top: 22px; }
+#mapa-danza-destino .panel { padding: 14px !important; border-radius: 16px; }
+#mapa-danza-destino h2 { font-size: 1rem; letter-spacing: 0; line-height: 1.3; overflow-wrap: normal; color: #fff0de; }
+#mapa-danza-destino .cabecera-panel { gap: 8px; }
+#mapa-danza-destino .mapa { min-height: 220px; }
+#mapa-danza-destino .mapa object { height: clamp(220px, 24vw, 300px); }
+#mapa-danza-destino .mapa-leyenda { display: none; }
+.ventana-danza-multimedia video { max-height: 65dvh; }
+@media (max-width: 900px) { .ventana-danza-grid { grid-template-columns: 1fr; gap: 24px; padding: 48px 22px 24px; } }
