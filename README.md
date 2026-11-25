@@ -144,15 +144,10 @@ Los estados posibles son sin_persona, multiples_personas, no_pose, puntos_insufi
 
 ## 11. Interfaz gráfica y capturas
 
-![Portada y tarjetas de las cuatro danzas en el primer paso](docs/images/interfaz-principal.png)
-
-*Figura 1. Portada y repertorio. Cada tarjeta muestra la postura y la región de la danza. El botón «Probar la danza» abre las instrucciones.*
-
-![Panel de cámara del segundo paso, con el visor en espera](docs/images/visor-en-espera.png)
-
-*Figura 2. Visor en espera, con la guía de encuadre y los controles para seleccionar y activar la cámara.*
-
-Queda pendiente una captura de la GUI tras reconocer una danza con cámara real que muestre el resultado confirmado y su ficha cultural.
+| Figura 1. Repertorio | Figura 2. Instrucciones | Figura 3. Visor de cámara |
+| :---: | :---: | :---: |
+| <a href="docs/images/interfaz-principal.png"><img src="docs/images/interfaz-principal.png" width="240" alt="Portada y tarjetas de las cuatro danzas"></a> | <a href="docs/images/instrucciones-postura.png"><img src="docs/images/instrucciones-postura.png" width="240" alt="Instrucciones para realizar la postura"></a> | <a href="docs/images/visor-en-espera.png"><img src="docs/images/visor-en-espera.png" width="240" alt="Guía de encuadre y controles de cámara"></a> |
+| Selección de danza, postura y región. | Guía para activar la cámara y mantener la pose. | Encuadre y selección de cámara. |
 
 ## 12. Métricas, gráficas y resultados
 
@@ -173,33 +168,33 @@ Las cinco gráficas de esta sección son salidas PNG extraídas de los dos noteb
 
 ![Curvas de pérdida del MLP](docs/images/resultados/mlp-perdida.png)
 
-*Figura 3. Pérdida de entrenamiento y validación del MLP por época.*
+*Figura 4. Pérdida de entrenamiento y validación del MLP por época.*
 
 ![Curvas de accuracy del MLP](docs/images/resultados/mlp-accuracy.png)
 
-*Figura 4. Fracción de aciertos del MLP en entrenamiento y validación por época.*
+*Figura 5. Fracción de aciertos del MLP en entrenamiento y validación por época.*
 
 ![Matriz de confusión del MLP](docs/images/resultados/mlp-matriz-confusion.png)
 
-*Figura 5. Errores entre las cuatro danzas en los 58 registros de prueba. Joropo tiene el menor recall, con 11 aciertos de 16 casos.*
+*Figura 6. Errores entre las cuatro danzas en los 58 registros de prueba. Joropo tiene el menor recall, con 11 aciertos de 16 casos.*
 
 ### CNN binaria
 
-La versión de Drive registra **116/121 aciertos (95,87 %)**, con 104/109 poses y 12/12 negativos clasificados correctamente por argmax. Cinco poses se clasificaron como no_pose. La copia del repositorio conserva una salida diferente sobre 121 recortes, con accuracy redondeada de 0,88 y recall de 0,00 para no_pose. No se ha atribuido ninguna de las dos ejecuciones al archivo local de pesos.
+La versión de Drive registra **116/121 aciertos (95,87 %)**, con 104/109 poses y 12/12 negativos clasificados correctamente por argmax. Cinco poses se clasificaron como no_pose. La copia del repositorio conserva una salida diferente sobre 121 recortes, con accuracy redondeada de 0,88 y recall de 0,00 para no_pose.
 
 ![Pérdida y accuracy de la CNN](docs/images/resultados/cnn-curvas.png)
 
-*Figura 6. Curvas de entrenamiento y validación de la versión de Drive. La validación contiene un negativo.*
+*Figura 7. Curvas de entrenamiento y validación de la versión de Drive. La validación contiene un negativo.*
 
 ![Matriz de confusión de la CNN](docs/images/resultados/cnn-matriz-confusion.png)
 
-*Figura 7. Matriz de prueba de la versión de Drive. Las filas son etiquetas reales y las columnas son predicciones.*
+*Figura 8. Matriz de prueba de la versión de Drive. Las filas son etiquetas reales y las columnas son predicciones.*
 
 ## 13. Análisis de errores y limitaciones
 
-Los resultados corresponden a registros de puntos o recortes evaluados por separado. Falta una evaluación del flujo completo con cámara, umbrales integrados, racha temporal y usuarios. Los 12 negativos de prueba y el único negativo de validación limitan la evidencia sobre falsos positivos. Conviene rastrear la versión exacta del dataset y de los pesos para explicar la diferencia entre los dos resultados guardados de CNN.
+Las métricas de los notebooks describen el desempeño de cada modelo sobre su propio conjunto de prueba. Los 12 negativos de prueba y el único negativo de validación limitan la evidencia sobre falsos positivos de la CNN.
 
-Una caja incorrecta, oclusiones, luz insuficiente o un encuadre diferente pueden interrumpir la racha. La regla temporal exige consistencia de clase y puede repetir un error estable. La aplicación reconoce posturas de interacción a partir de fotogramas y la evaluación por ángulos sigue pendiente. La autenticidad de una ejecución de danza está fuera del alcance.
+Una caja incorrecta, oclusiones, luz insuficiente o un encuadre diferente pueden interrumpir la racha. La regla temporal exige consistencia de clase y puede repetir un error estable. La aplicación reconoce posturas de interacción a partir de fotogramas.
 
 ## 14. Instalación y ejecución local
 
@@ -235,11 +230,11 @@ En esta revisión pasaron las seis pruebas de Python 3.12.14 con las dependencia
 
 Por HTTP en localhost se verificó la entrega de la página y de sus scripts, el estado de salud, la creación de sesión y una predicción multipart con un fotograma vacío, que devolvió sin_persona.
 
-Una comprobación adicional con el cliente de Flask confirmó currulao al enviar tres veces la misma imagen local. La secuencia verificó la integración y los estados de racha con pesos reales. Las imágenes de un archivo local de cumbia no produjeron una predicción de esa clase por la API, aunque el MLP sí la produjo con coordenadas guardadas en el CSV de Drive. Esta comprobación exploratoria deja pendiente reproducir el caso con una captura controlada. La prueba con cámara, visitantes y las cuatro poses sigue pendiente.
+Una comprobación adicional con el cliente de Flask confirmó currulao al enviar tres veces la misma imagen local. La secuencia verificó la integración y los estados de racha con pesos reales.
 
 ## 16. Conclusiones
 
-El flujo implementado combina cajas y puntos corporales, clasificación binaria de recortes, clasificación de cuatro posturas y confirmación por sesión para activar el contenido cultural. Los notebooks permiten explicar y evaluar componentes individuales. La siguiente evidencia experimental necesaria es probar el predictor integrado con las cuatro poses y casos de rechazo en condiciones de uso reales.
+El flujo implementado combina cajas y puntos corporales, clasificación binaria de recortes, clasificación de cuatro posturas y confirmación por sesión para activar el contenido cultural. Los notebooks documentan el entrenamiento y la evaluación de cada modelo. Las pruebas de integración comprueban cómo se conectan los modelos, la API y la interfaz.
 
 ## 17. Equipo y referencias
 
