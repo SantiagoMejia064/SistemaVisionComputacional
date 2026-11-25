@@ -1,5 +1,17 @@
 # Colombia en Movimiento
 
+**Visión por computador para explorar las danzas tradicionales de Colombia.**
+
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-303030?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-B93421?style=flat-square&logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-42547A?style=flat-square&logo=opencv&logoColor=white)](https://opencv.org/)
+[![YOLO11 Pose](https://img.shields.io/badge/YOLO11%20Pose-6246B3?style=flat-square)](https://docs.ultralytics.com/models/yolo11/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-59359A?style=flat-square&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+
+[Arquitectura](#4-arquitectura-del-sistema) · [Interfaz](#11-interfaz-gráfica-y-capturas) · [Instalación](#14-instalación-y-ejecución-local) · [Equipo](#17-equipo-y-referencias)
+
 ## 1. Introducción y problemática
 
 Colombia en Movimiento es una experiencia cultural interactiva de Procesamiento Digital de Imágenes. La cámara permite explorar cuatro danzas colombianas mediante posturas asociadas a bambuco, cumbia, currulao y joropo. El reto técnico consiste en obtener una señal útil de un fotograma aunque cambien el encuadre, la iluminación o el fondo.
@@ -270,9 +282,9 @@ El flujo implementado combina cajas y puntos corporales, clasificación binaria 
 
 | Integrante | Rol principal | Responsabilidades |
 | --- | --- | --- |
-| Santiago Mejía Suárez | Responsable técnico | Arquitectura, integración frontend y backend, coordinación técnica y seguimiento de visión computacional |
-| Jean Carlo Caicedo Chantre | Responsable funcional | Requisitos, alcance, escenarios de uso y correspondencia con necesidades |
-| Jhoan Esteban Burgos | Responsable de interacción | Experiencia de usuario, navegación, prototipado, retroalimentación y coherencia visual |
+| Santiago Mejía Suárez ([@SantiagoMejia064](https://github.com/SantiagoMejia064)) | Responsable técnico | Arquitectura, integración frontend y backend, coordinación técnica y seguimiento de visión computacional |
+| Jean Carlo Caicedo Chantre ([@Chantrex11](https://github.com/Chantrex11)) | Responsable funcional | Requisitos, alcance, escenarios de uso y correspondencia con necesidades |
+| Jhoan Esteban Burgos ([@JhoanBurgos](https://github.com/JhoanBurgos)) | Responsable de interacción | Experiencia de usuario, navegación, prototipado, retroalimentación y coherencia visual |
 | Karol Lizeth Grain Mosquera | Validadora | Planificación y ejecución de pruebas, revisión de criterios de aceptación y oportunidades de mejora |
 
 Los roles describen responsabilidades organizativas del equipo. No asignan autoría exclusiva de archivos ni certifican tareas individuales realizadas.
