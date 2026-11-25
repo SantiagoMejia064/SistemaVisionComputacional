@@ -144,13 +144,13 @@ Los estados posibles son sin_persona, multiples_personas, no_pose, puntos_insufi
 
 ## 11. Interfaz gráfica y capturas
 
-![Portada y repertorio de Colombia en Movimiento](docs/images/interfaz-principal.png)
+![Portada y tarjetas de las cuatro danzas en el primer paso](docs/images/interfaz-principal.png)
 
-*Figura 1. Interfaz principal para explorar las cuatro danzas.*
+*Figura 1. Portada y repertorio. Cada tarjeta muestra la postura y la región de la danza. El botón «Probar la danza» abre las instrucciones.*
 
-![Visor de cámara en espera](docs/images/visor-en-espera.png)
+![Panel de cámara del segundo paso, con el visor en espera](docs/images/visor-en-espera.png)
 
-*Figura 2. Visor en espera antes de iniciar la detección. La sección de resultados muestra los indicadores cuando llegan fotogramas.*
+*Figura 2. Visor en espera, con la guía de encuadre y los controles para seleccionar y activar la cámara.*
 
 Queda pendiente una captura de la GUI tras reconocer una danza con cámara real que muestre el resultado confirmado y su ficha cultural.
 
