@@ -198,7 +198,29 @@ Una caja incorrecta, oclusiones, luz insuficiente o un encuadre diferente pueden
 
 ## 14. Instalación y ejecución local
 
-Desde la raíz del proyecto, usar Python 3.13, versión del entorno original, o Python 3.12.14, versión comprobada en esta revisión. Preparar los pesos en estas rutas.
+En Windows, usa Python 3.13 o 3.12.14 y abre una terminal PowerShell. Si todavía no tienes el proyecto, clona el repositorio y entra en su carpeta.
+
+~~~powershell
+git clone https://github.com/SantiagoMejia064/SistemaVisionComputacional.git
+cd SistemaVisionComputacional
+~~~
+
+Si ya tienes el proyecto, abre la terminal en la carpeta que contiene `requirements.txt`.
+
+### 1. Instalar las dependencias
+
+Crea un entorno virtual e instala los paquetes desde la terminal. Este paso se hace la primera vez o cuando cambia `requirements.txt`.
+
+~~~powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+~~~
+
+Si PowerShell no reconoce `python`, usa la ruta completa de `python.exe` en el primer comando.
+
+### 2. Colocar los pesos
+
+El repositorio incluye `yolo11n-pose.pt`. Descarga los dos archivos `.pth` del Drive del equipo y colócalos en las rutas indicadas. [Datos y modelos del equipo](https://drive.google.com/drive/folders/1OiU35X_bGq5RkKuuXAHBH0aeCmfa8w46)
 
 | Archivo | Uso |
 | --- | --- |
@@ -206,15 +228,17 @@ Desde la raíz del proyecto, usar Python 3.13, versión del entorno original, o 
 | models/cnn/cnn_filtro_pose.pth | MobileNetV2 binaria |
 | models/yolo/pose_classifier.pth | MLP de cuatro clases |
 
-Los dos .pth pueden obtenerse del Drive del equipo y están ignorados por Git. El servidor indica la ruta si falta un modelo. [Datos y modelos del equipo](https://drive.google.com/drive/folders/1OiU35X_bGq5RkKuuXAHBH0aeCmfa8w46)
+### 3. Iniciar el backend y abrir la interfaz
+
+Desde la raíz del proyecto, ejecuta este comando cada vez que quieras iniciar el sistema.
 
 ~~~powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m backend.yolo.api
 ~~~
 
-Abrir [la interfaz local](http://127.0.0.1:5000) y conceder acceso a la cámara. También se admite Live Server desde localhost con la API de Flask en el puerto 5000. Si Python no está en PATH, usar su ruta completa. CUDA depende de la instalación de PyTorch.
+Cuando Flask indique que está sirviendo en el puerto 5000, abre el enlace en el navegador y concede acceso a la cámara al activarla. Mantén abierta la terminal mientras usas la aplicación y presiona `Ctrl+C` para detener el servidor. [Abrir la interfaz local](http://127.0.0.1:5000)
+
+Si usas Live Server, abre el frontend desde localhost y mantén Flask ejecutándose en el puerto 5000.
 
 ## 15. Pruebas y validación
 
