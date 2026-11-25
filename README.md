@@ -220,13 +220,13 @@ Si PowerShell no reconoce `python`, usa la ruta completa de `python.exe` en el p
 
 ### 2. Colocar los pesos
 
-El repositorio incluye `yolo11n-pose.pt`. Descarga los dos archivos `.pth` del Drive del equipo y colócalos en las rutas indicadas. [Datos y modelos del equipo](https://drive.google.com/drive/folders/1OiU35X_bGq5RkKuuXAHBH0aeCmfa8w46)
+El repositorio incluye `yolo11n-pose.pt`. Dentro de la carpeta `SistemaVisionComputacional`, guarda `cnn_filtro_pose.pth` en `models/cnn/` y `pose_classifier.pth` en `models/yolo/`. Conserva los nombres exactos al descargarlos.
 
-| Archivo | Uso |
-| --- | --- |
-| yolo11n-pose.pt | YOLO11n Pose, en la raíz |
-| models/cnn/cnn_filtro_pose.pth | MobileNetV2 binaria |
-| models/yolo/pose_classifier.pth | MLP de cuatro clases |
+| Ruta desde la raíz del proyecto | Uso | Archivo |
+| --- | --- | --- |
+| `yolo11n-pose.pt` | YOLO11n Pose | Incluido en el repositorio |
+| `models/cnn/cnn_filtro_pose.pth` | MobileNetV2 binaria | [Descargar cnn_filtro_pose.pth](https://drive.google.com/file/d/14Z14kiBSrnnSOTs1iY5hSHa9zZuGOjoL/view?usp=drive_link) |
+| `models/yolo/pose_classifier.pth` | MLP de cuatro clases | [Descargar pose_classifier.pth](https://drive.google.com/file/d/17Ao46fIpTgFm1dfUOyDE6xr0LubQVwKa/view?usp=drive_link) |
 
 ### 3. Iniciar el backend y abrir la interfaz
 
